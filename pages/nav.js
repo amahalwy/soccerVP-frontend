@@ -7,9 +7,12 @@ import {
   MenuDivider,
   MenuOptionGroup,
   MenuItemOption,
-} from "@chakra-ui/core";
+} from "@chakra-ui/core"
+import {useSelector} from 'react-redux';
 
 export default function Navbar() {
+  const currentUser = useSelector(state => state.session.user);
+  
   return (
     <div className='navbar'>
       <div>

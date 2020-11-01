@@ -1,14 +1,14 @@
 .navbar {
   display: flex;
-  height: 50px;
+  height: 60px;
   background-color: gray;
 }
 
 .navbar > div:first-child {
   height: 40px;
   width: 80px;
-  margin: 5px 0;
   margin-left: 10px;
+  justify-self: flex-end;
 }
 
 #menubutton-2 {
@@ -16,5 +16,12 @@
   width: 100%;
 }
 
-#menubutton-2:hover {cursor: pointer;}
+#menubutton-2:focus {
+  outline: none;
+}
+
+#menubutton-2:hover {
+  cursor: pointer;
+  background-color: rgb(204, 204, 204);
+}
 #menu-1 button:hover {cursor: pointer;}
