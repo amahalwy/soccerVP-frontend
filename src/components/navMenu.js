@@ -32,7 +32,7 @@ export default function NavMenu(props) {
       </MenuButton>
       <MenuList>
         <MenuItem color='black'>Home</MenuItem>
-        <MenuItem color='black' onClick={showCreate}>Create Event</MenuItem>
+        {/* <MenuItem color='black' onClick={showCreate}>Create Event</MenuItem> */}
         <MenuItem color='black' onClick={showSignup}>Signup</MenuItem>
         <MenuItem color='black' onClick={showLogin}>Login</MenuItem>
       </MenuList>

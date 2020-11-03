@@ -12,8 +12,19 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/core";
-// import { useQuery } from 'react-query';
-// import { createUser } from '../../utils/api';
+import { useMutation } from 'react-query';
+
+const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
+
+const makeUrl = (path) => `${API_HOST}${path}`;
+
+const postUser = (user) => fetch(makeUrl('/users'), {
+  method: 'POST',
+  headers: {
+    Authorization: '... get the localStorage JWT key ...',
+  },
+  body: user
+}).then(r => r.json())
 
 export default function Signup(props) {
   const [firstName, setFirstName] = React.useState('');
@@ -24,7 +35,19 @@ export default function Signup(props) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  const handleSignup = () => {
+  const createUser = (user) => {
+    postUser(user)
+    .then(r => {
+      if (r.message === 'Success') {
+        props.showAuth();
+      }
+    })
+  }
+  const [mutate] = useMutation(createUser)
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
     const user = new FormData();
     user.append("user[first_name]", firstName);
     user.append("user[last_name]", lastName);
@@ -34,13 +57,13 @@ export default function Signup(props) {
     user.append("user[email]", email);
     user.append("user[password]", password);
 
-  }
+    try {
+      await mutate(user)
 
-  // const createQuery = () => {
-  //   const { isLoading, error, data } = useQuery(['event'], createUser);
-  //   if (isLoading) return 'Loading...';
-  //   if (error) return 'An error has occurred: ' + error.message;
-  // }
+    } catch (error) {  
+      console.log(error)
+    }
+  }
 
   const clearFields = () => {
     setFirstName('');

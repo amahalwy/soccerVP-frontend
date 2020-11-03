@@ -12,26 +12,30 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/core";
 import { useMutation } from 'react-query';
-// import {postUser} from '../utils/api'
 
 const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
 
 const makeUrl = (path) => `${API_HOST}${path}`;
 
 const postUser = (user) => fetch(makeUrl('/users'), {
-      method: 'POST',
-      headers: {
-        Authorization: '... get the localStorage JWT key ...',
-      },
-      body: user
-    }).then(r => r.json())
+    method: 'POST',
+    headers: {
+      Authorization: '... get the localStorage JWT key ...',
+    },
+    body: user
+  }).then(r => r.json())
 
 export default function Login(props) {
   const [number, setNumber] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   const createUser = (user) => {
-    postUser(user);
+    postUser(user)
+    .then(r => {
+      if (r.message === 'Success') {
+        props.showAuth();
+      }
+    })
   }
   const [mutate] = useMutation(createUser)
 
@@ -39,8 +43,7 @@ export default function Login(props) {
     e.preventDefault();
 
     const user = new FormData();
-    
-    user.append("user[number]", number);
+    user.append("user[phone_number]", number);
     user.append("user[password]", password);
 
     try {

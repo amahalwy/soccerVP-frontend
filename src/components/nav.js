@@ -11,16 +11,15 @@ import { Box, Heading, Flex, Text, Button,Modal,
 import {useSelector} from 'react-redux';
 import Login from '../components/login';
 import Signup from '../components/signup';
-import Create from '../components/createEvent';
-import NavMenu from './navMenu';
+import NavMenu from './NavMenu';
+import AuthModal from './AuthModal';
+// import Create from './CreateEvent';
 
 const MenuItems = ({ children }) => (
   <Text mt={{ base: 4, md: 0 }} mr={6} display="block">
     {children}
   </Text>
 );
-
-
 
 export default function Navbar(props) {
   const [show, setShow] = React.useState(false);
@@ -46,17 +45,25 @@ export default function Navbar(props) {
     setSignup(false);
   }
 
-  const [openCreateModal, setCreate] = React.useState(false);
+  // const [openCreateModal, setCreate] = React.useState(false);
 
-  const showCreate = () => {
-    setCreate(true);
+  // const showCreate = () => {
+  //   setCreate(true);
+  // }
+
+  // const closeCreate = () => {
+  //   setCreate(false);
+  // }
+
+  const [openAuth, setAuth] = React.useState(false);
+   const showAuth = () => {
+    setAuth(true);
   }
 
-  const closeCreate = () => {
-    setCreate(false);
+  const closeAuth = () => {
+    setAuth(false);
   }
 
-  
   return (
     <Flex
       as="nav"
@@ -104,11 +111,13 @@ export default function Navbar(props) {
       >
       </Box>
 
-      <Signup openSignupModal={openSignupModal} closeSignup={closeSignup} />
-      <Login openLoginModal={openLoginModal} closeLogin={closeLogin} />
-      <Create openCreateModal={openCreateModal} closeCreate={closeCreate} />
+      <Signup openSignupModal={openSignupModal} closeSignup={closeSignup} showAuth={showAuth} />
+      <Login openLoginModal={openLoginModal} closeLogin={closeLogin} showAuth={showAuth}/>
+      {/* <Create openCreateModal={openCreateModal} closeCreate={closeCreate} /> */}
+      <AuthModal openAuth={openAuth} closeAuth={closeAuth} />
 
-      <NavMenu showSignup={showSignup} showLogin={showLogin} showCreate={showCreate} bg="transparent" border="1px"/>
+      <NavMenu showSignup={showSignup} showLogin={showLogin} bg="transparent" border="1px"/>
+       {/*showCreate={showCreate}*/}
 
     </Flex>
   );
