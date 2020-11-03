@@ -4,12 +4,10 @@ import {
   Button,
   Flex,
   Input,
-
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/core";
@@ -19,7 +17,8 @@ export default function Login(props) {
   const [password, setPassword] = React.useState('');
 
   const handleLogin = () => {
-
+    user.append("user[email]", email);
+    user.append("user[password]", password);
   }
 
   return (
@@ -51,7 +50,7 @@ export default function Login(props) {
               </Box>
               <Box mb='5px'>
                 <Flex justifyContent='center' mb='20px' >
-                  <Button w='100%'>Log me in!</Button>
+                  <Button w='100%' onClick={handleLogin}>Log me in!</Button>
                 </Flex>
                 <Box fontSize='14px'>
                   <p>Don't have an account? <strong>Sign up</strong></p>
