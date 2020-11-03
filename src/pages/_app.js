@@ -4,7 +4,9 @@ import { theme } from '@chakra-ui/core';
 import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 import { ReactQueryCacheProvider, QueryCache } from 'react-query';
 import { Hydrate } from 'react-query/hydration'
+import Head from 'next/head'
 
+{/* <script src="https://www.paypal.com/sdk/js?client-id=sb" /> */}
 
 import Nav from '../components/nav';
 
@@ -38,6 +40,9 @@ const GlobalStyle = () => {
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <script src="https://www.paypal.com/sdk/js?client-id=sb" />
+      </Head>
       <CSSReset />
       <GlobalStyle />
       <ReactQueryCacheProvider queryCache={queryCache}>

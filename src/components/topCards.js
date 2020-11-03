@@ -7,15 +7,14 @@ import {
   Text, 
  } from "@chakra-ui/core";
 
-export default function Cards(data) {
+export default function topCards(data) {
    
   const newData = data.data;
-
-  // const startTime = 
-  // const end = 
   
   const location = `We'll be playing at ${newData.location}. Make sure you check the weather!`;
   const start = `Event time will be ${getDate(newData.starts_at)} - ${getEndTime(newData.ends_at)}`
+  const playerInfo = `Cost of each player is $${newData.cost_per_participant}. 
+                      Book fast, this event is capped at ${newData.max_participants} total players!`
 
   function getDate(date) {
     let newDate = '';
@@ -55,7 +54,7 @@ export default function Cards(data) {
   
   function StackEx() {
     return (
-      <Stack >
+      <Stack mb='60px' >
         <Flex>
           <Feature
             title="Location"
@@ -68,12 +67,12 @@ export default function Cards(data) {
         </Flex>
         <Flex>
           <Feature
-            title="Play Time"
-            desc={start}
+            title="Player information"
+            desc={playerInfo}
           />
           <Feature
-            title="Play Time"
-            desc={start}
+            title="Anything else?"
+            desc="Reach out to the organizer for further details!"
           />
         </Flex>
       </Stack>

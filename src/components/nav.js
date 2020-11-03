@@ -11,6 +11,7 @@ import { Box, Heading, Flex, Text, Button,Modal,
 import {useSelector} from 'react-redux';
 import Login from '../components/login';
 import Signup from '../components/signup';
+import Create from '../components/createEvent';
 import NavMenu from './navMenu';
 
 const MenuItems = ({ children }) => (
@@ -26,15 +27,16 @@ export default function Navbar(props) {
   const handleToggle = () => setShow(!show);
 
   const [openLoginModal, setLogin] = React.useState(false);
-  const [openSignupModal, setSignup] = React.useState(false);
-
+  
   const showLogin = () => {
     setLogin(true);
   }
-
+  
   const closeLogin = () => {
     setLogin(false);
   }
+
+  const [openSignupModal, setSignup] = React.useState(false);
 
   const showSignup = () => {
     setSignup(true);
@@ -42,6 +44,16 @@ export default function Navbar(props) {
 
   const closeSignup = () => {
     setSignup(false);
+  }
+
+  const [openCreateModal, setCreate] = React.useState(false);
+
+  const showCreate = () => {
+    setCreate(true);
+  }
+
+  const closeCreate = () => {
+    setCreate(false);
   }
 
   
@@ -94,8 +106,9 @@ export default function Navbar(props) {
 
       <Signup openSignupModal={openSignupModal} closeSignup={closeSignup} />
       <Login openLoginModal={openLoginModal} closeLogin={closeLogin} />
+      <Create openCreateModal={openCreateModal} closeCreate={closeCreate} />
 
-      <NavMenu showSignup={showSignup} showLogin={showLogin} bg="transparent" border="1px"/>
+      <NavMenu showSignup={showSignup} showLogin={showLogin} showCreate={showCreate} bg="transparent" border="1px"/>
 
     </Flex>
   );

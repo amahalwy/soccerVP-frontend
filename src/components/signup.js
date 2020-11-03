@@ -12,6 +12,8 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/core";
+// import { useQuery } from 'react-query';
+// import { createUser } from '../../utils/api';
 
 export default function Signup(props) {
   const [firstName, setFirstName] = React.useState('');
@@ -31,7 +33,14 @@ export default function Signup(props) {
     user.append("user[phone_number]", number);
     user.append("user[email]", email);
     user.append("user[password]", password);
+
   }
+
+  // const createQuery = () => {
+  //   const { isLoading, error, data } = useQuery(['event'], createUser);
+  //   if (isLoading) return 'Loading...';
+  //   if (error) return 'An error has occurred: ' + error.message;
+  // }
 
   const clearFields = () => {
     setFirstName('');

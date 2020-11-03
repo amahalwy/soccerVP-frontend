@@ -7,28 +7,27 @@ import {
   Flex,
   Heading
 } from "@chakra-ui/core";
-import Cards from '../../components/cards';
+import TopCards from '../../components/topCards';
+import BottomCards from '../../components/bottomCards';
 
 const Event = () => {
   const router = useRouter();
-
   const { isLoading, error, data } = useQuery(['event', router.query.eventId], getEvent);
-
   if (isLoading) return 'Loading...';
-
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <Flex>
       <Box w='60%' m='4rem'>
-        <Heading w='90%' size="lg" fontSize="60px">
+        <Heading w='90%' size="lg" fontSize="100px" mb='120px'>
           Here's what you need to know:
         </Heading>
+        <BottomCards data={data}/>
       </Box>
       <Box w='60%' m='3rem'>
-        <Cards data={data}/>
-        <Heading size="lg" fontSize="50px" >
-          How to get a spot?
+        <TopCards data={data}/>
+        <Heading size="lg" fontSize="80px" >
+          How to get your spot?
         </Heading>
       </Box>
     </Flex>
