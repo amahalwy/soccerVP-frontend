@@ -5,6 +5,7 @@ import {
   Flex, 
   Text, 
   Button,
+  IconButton,
   InputGroup,
   Input,
   InputRightElement
@@ -60,7 +61,7 @@ export default function Search() {
           onChange={e => setLocation(e.currentTarget.value)}
         />
         <InputRightElement width="4.5rem" h="70%" m='7px 15px' >
-          <Button 
+          {/* <Button 
             h="100%" 
             size="sm" 
             focusBorderColor='none'
@@ -68,7 +69,9 @@ export default function Search() {
             onClick={handleSearch} 
           >
             *Search logo*
-          </Button>
+          </Button> */}
+
+          <IconButton aria-label="Search database" icon="search" />
         </InputRightElement>
       </InputGroup>
     </Flex>

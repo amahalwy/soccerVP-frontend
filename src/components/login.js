@@ -28,9 +28,9 @@ export default function Login(props) {
 
   return (
     <Modal isOpen={props.openLoginModal} onClose={() => {
-      clearFields();
-      props.closeLogin();
-    }
+        clearFields();
+        props.closeLogin();
+      }
     }>
         <ModalOverlay/>
         <ModalContent mt='300px' borderRadius='20px'>
