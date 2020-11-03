@@ -11,16 +11,46 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/core";
+import {useMutation} from 'react-query';
+
+const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
+
+const makeUrl = (path) => `${API_HOST}${path}`;
+
+const postSession = (request) => fetch(makeUrl('/sessions'), {
+    method: 'POST',
+    headers: {
+      Authorization: '... get the localStorage JWT key ...',
+    },
+    body: request
+  }).then(r => r.json());
 
 export default function AuthModal(props) {
   const [code, setCode] = React.useState('');
+  const [number, setNumber] = React.useState('');
     
   const clearFields = () => {
     setCode('');
   }
 
-  const handleLogin = () => {
-    
+  const createSession = (req) => {
+    postSession(req);
+  }
+  const [mutate] = useMutation(createSession)
+
+  const handleLogin = async (e) => {
+     e.preventDefault();
+
+    const req = new FormData();
+    req.append("phone_number", number);
+    req.append("code", code);
+
+    try {
+      await mutate(req);
+
+    } catch (error) {  
+      console.log(error);
+    }
   }
 
   return (
@@ -40,6 +70,12 @@ export default function AuthModal(props) {
         />
         <ModalBody>
           <Box w='100%' h='100%'>
+            <Box mb='20px'>
+              <Input
+                value={number} placeholder='Confirm Your Number'
+                onChange={e => setNumber(e.currentTarget.value)} 
+              />
+            </Box>
             <Box mb='20px'>
               <Input
                 value={code} placeholder='Your OTP code'
