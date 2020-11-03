@@ -31,11 +31,23 @@ export default function Signup(props) {
     user.append("user[phone_number]", number);
     user.append("user[email]", email);
     user.append("user[password]", password);
+  }
 
+  const clearFields = () => {
+    setFirstName('');
+    setLastName('');
+    setAge('');
+    setGender('');
+    setNumber('');
+    setEmail('');
+    setPassword('');
   }
 
   return (
-    <Modal isOpen={props.openSignupModal} onClose={props.closeSignup}>
+    <Modal isOpen={props.openSignupModal} onClose={() => {
+      clearFields();
+      props.closeSignup();
+      }}>
         <ModalOverlay/>
         <ModalContent mt='200px' borderRadius='20px'>
           <ModalHeader mt='10px'>Create your profile</ModalHeader>

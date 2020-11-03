@@ -21,8 +21,17 @@ export default function Login(props) {
     user.append("user[password]", password);
   }
 
+  const clearFields = () => {
+    setEmail('');
+    setPassword('');
+  }
+
   return (
-    <Modal isOpen={props.openLoginModal} onClose={props.closeLogin}>
+    <Modal isOpen={props.openLoginModal} onClose={() => {
+      clearFields();
+      props.closeLogin();
+    }
+    }>
         <ModalOverlay/>
         <ModalContent mt='300px' borderRadius='20px'>
           <ModalHeader mt='10px'>Log in</ModalHeader>

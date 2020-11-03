@@ -54,6 +54,7 @@ export default function Navbar(props) {
       padding="1.5rem"
       bg="teal.500"
       color="white"
+      boxShadow="0px 12px 12px 1px rgba(0, 0, 0, .4);"
       {...props}
     >
       <Flex align="center" mr={5}>
