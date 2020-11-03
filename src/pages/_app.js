@@ -1,10 +1,14 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
 import { theme } from '@chakra-ui/core';
-import { Provider } from 'react-redux';
-import { useStore } from '../redux/store';
 import { ThemeProvider, CSSReset } from '@chakra-ui/core';
+import { ReactQueryCacheProvider, QueryCache } from 'react-query';
+import { Hydrate } from 'react-query/hydration'
+
+
 import Nav from '../components/nav';
+
+const queryCache = new QueryCache();
 
 const GlobalStyle = () => {
   return (
@@ -32,16 +36,16 @@ const GlobalStyle = () => {
 };
 
 function MyApp({ Component, pageProps }) {
-  const store = useStore(pageProps.initialReduxState);
-
   return (
     <ThemeProvider theme={theme}>
       <CSSReset />
       <GlobalStyle />
-      <Provider store={store}>
-        <Nav />
-        <Component {...pageProps} />
-      </Provider>
+      <ReactQueryCacheProvider queryCache={queryCache}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Nav />
+          <Component {...pageProps} />
+        </Hydrate>
+      </ReactQueryCacheProvider>
     </ThemeProvider>
   );
 }
