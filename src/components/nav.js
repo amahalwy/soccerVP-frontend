@@ -13,7 +13,6 @@ import Login from '../components/login';
 import Signup from '../components/signup';
 import NavMenu from './NavMenu';
 import AuthModal from './AuthModal';
-// import Create from './CreateEvent';
 
 const MenuItems = ({ children }) => (
   <Text mt={{ base: 4, md: 0 }} mr={6} display="block">
@@ -44,16 +43,6 @@ export default function Navbar(props) {
   const closeSignup = () => {
     setSignup(false);
   }
-
-  // const [openCreateModal, setCreate] = React.useState(false);
-
-  // const showCreate = () => {
-  //   setCreate(true);
-  // }
-
-  // const closeCreate = () => {
-  //   setCreate(false);
-  // }
 
   const [openAuth, setAuth] = React.useState(false);
    const showAuth = () => {
@@ -113,7 +102,6 @@ export default function Navbar(props) {
 
       <Signup openSignupModal={openSignupModal} closeSignup={closeSignup} showAuth={showAuth} />
       <Login openLoginModal={openLoginModal} closeLogin={closeLogin} showAuth={showAuth}/>
-      {/* <Create openCreateModal={openCreateModal} closeCreate={closeCreate} /> */}
       <AuthModal openAuth={openAuth} closeAuth={closeAuth} />
 
       <NavMenu showSignup={showSignup} showLogin={showLogin} bg="transparent" border="1px"/>

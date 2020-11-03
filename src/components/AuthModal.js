@@ -23,7 +23,11 @@ const postSession = (request) => fetch(makeUrl('/sessions'), {
       Authorization: '... get the localStorage JWT key ...',
     },
     body: request
-  }).then(r => r.json());
+  })
+  .then(r => r.json())
+  .then(data => {
+    localStorage.setItem('jwtToken', data.jwt)
+  })
 
 export default function AuthModal(props) {
   const [code, setCode] = React.useState('');
