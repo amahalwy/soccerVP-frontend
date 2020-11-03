@@ -7,8 +7,8 @@ import {
   Flex,
   Heading
 } from "@chakra-ui/core";
-import TopCards from '../../components/topCards';
-import BottomCards from '../../components/bottomCards';
+import TopCards from '../../components/TopCards';
+import BottomCards from '../../components/BottomCards';
 
 const Event = () => {
   const router = useRouter();
