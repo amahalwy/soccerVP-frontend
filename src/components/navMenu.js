@@ -10,7 +10,6 @@ import {
   MenuItemOption,
 
 } from "@chakra-ui/core";
-import Signup from './signup';
 
 export default function NavMenu(props) {
 
@@ -31,7 +30,6 @@ export default function NavMenu(props) {
         <MenuItem color='black'>Home</MenuItem>
         <MenuItem color='black' onClick={showSignup}>Signup</MenuItem>
         <MenuItem color='black' onClick={showLogin}>Login</MenuItem>
-        <MenuItem color='black'>Delete</MenuItem>
       </MenuList>
     </Menu>
   )
