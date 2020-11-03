@@ -2,10 +2,12 @@ let _nullUser = {
   user: null
 }
 
-export default (oldState = _nullUser, action) => {
+const session = (oldState = _nullUser, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     default:
       return oldState;
   }
 }
+
+export default session;

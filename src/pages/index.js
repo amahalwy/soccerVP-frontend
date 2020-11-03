@@ -1,10 +1,15 @@
 import React from 'react'
+import Search from '../components/search';
+import {
+  Box
+} from '@chakra-ui/core'
 
 const Home = () => {
   return (
-    <div>
+    <Box>
+      <Search/>
       Index
-    </div>
+    </Box>
   )
 }
 

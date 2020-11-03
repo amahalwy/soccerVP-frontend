@@ -1,6 +1,17 @@
 import React from 'react';
-import { Box, Heading, Flex, Text, Button } from "@chakra-ui/core";
+import { Box, Heading, Flex, Text, Button,Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure
+} from "@chakra-ui/core";
 import {useSelector} from 'react-redux';
+import Login from '../components/login';
+import Signup from '../components/signup';
+import NavMenu from './navMenu';
 
 const MenuItems = ({ children }) => (
   <Text mt={{ base: 4, md: 0 }} mr={6} display="block">
@@ -8,10 +19,32 @@ const MenuItems = ({ children }) => (
   </Text>
 );
 
+
+
 export default function Navbar(props) {
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
 
+  const [openLoginModal, setLogin] = React.useState(false);
+  const [openSignupModal, setSignup] = React.useState(false);
+
+  const showLogin = () => {
+    setLogin(true);
+  }
+
+  const closeLogin = () => {
+    setLogin(false);
+  }
+
+  const showSignup = () => {
+    setSignup(true);
+  }
+
+  const closeSignup = () => {
+    setSignup(false);
+  }
+
+  
   return (
     <Flex
       as="nav"
@@ -56,10 +89,13 @@ export default function Navbar(props) {
         display={{ sm: show ? "block" : "none", md: "block" }}
         mt={{ base: 4, md: 0 }}
       >
-        <Button bg="transparent" border="1px">
-          Create account
-        </Button>
       </Box>
+
+      <Signup openSignupModal={openSignupModal} closeSignup={closeSignup} />
+      <Login openLoginModal={openLoginModal} closeLogin={closeLogin} />
+
+      <NavMenu showSignup={showSignup} showLogin={showLogin} bg="transparent" border="1px"/>
+
     </Flex>
   );
 }
