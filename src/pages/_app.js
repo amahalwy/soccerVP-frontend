@@ -2,13 +2,11 @@ import React from 'react';
 import { Global, css } from '@emotion/core';
 import { theme } from '@chakra-ui/core';
 import { ThemeProvider, CSSReset } from '@chakra-ui/core';
-import { ReactQueryCacheProvider, QueryCache } from 'react-query';
+import { ReactQueryCacheProvider, QueryCache, useQuery } from 'react-query';
 import { Hydrate } from 'react-query/hydration'
 import Head from 'next/head'
-
-{/* <script src="https://www.paypal.com/sdk/js?client-id=sb" /> */}
-
 import Nav from '../components/nav';
+import '../styles/styles.css';
 
 const queryCache = new QueryCache();
 
@@ -37,7 +35,25 @@ const GlobalStyle = () => {
   );
 };
 
+const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
+
+const makeUrl = (path) => `${API_HOST}${path}`;
+
+
 function MyApp({ Component, pageProps }) {
+
+  if (typeof window !== "undefined") {
+    const getCurrentUser = (key, access_token) => fetch(makeUrl('/current_user'), {
+      headers: {
+        Authorization: localStorage.jwtToken
+      },
+      access_token
+    }).then(r => r.json())
+    const { isLoading, error, data } = useQuery(['user'], getCurrentUser);
+    if (isLoading) return 'Loading...';
+    if (error) return 'An error has occurred: ' + error.message;
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Head>

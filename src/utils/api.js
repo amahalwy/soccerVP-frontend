@@ -23,3 +23,11 @@ export const postUser = (key, user) => fetch(makeUrl('/users'), {
   },
   body: user
 }).then(r => r.json())
+
+
+export const getCurrentUser = (key, token) => fetch(makeUrl(`/users/current_user`), {
+  headers: {
+    Authorization: {token}
+  }
+}).then(r => r.json())
+

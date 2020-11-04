@@ -19,14 +19,15 @@ const makeUrl = (path) => `${API_HOST}${path}`;
 
 const postSession = (request) => fetch(makeUrl('/sessions'), {
     method: 'POST',
-    headers: {
-      Authorization: '... get the localStorage JWT key ...',
-    },
     body: request
   })
   .then(r => r.json())
   .then(data => {
-    localStorage.setItem('jwtToken', data.jwt)
+    if (data.error) {
+      alert(data.error);
+    } else {
+      localStorage.setItem('jwtToken', data.jwt);
+    }
   })
 
 export default function AuthModal(props) {
@@ -34,6 +35,7 @@ export default function AuthModal(props) {
   const [number, setNumber] = React.useState('');
     
   const clearFields = () => {
+    setNumber('');
     setCode('');
   }
 
@@ -43,7 +45,7 @@ export default function AuthModal(props) {
   const [mutate] = useMutation(createSession)
 
   const handleLogin = async (e) => {
-     e.preventDefault();
+    e.preventDefault();
 
     const req = new FormData();
     req.append("phone_number", number);

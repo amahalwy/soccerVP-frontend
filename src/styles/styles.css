@@ -1,0 +1,15 @@
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.pf-ft-list {
+  display: none;
+}
+
+.feature-list:hover .pf-ft-list {
+  display: block;
+}
