@@ -12,27 +12,32 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/core";
 import {useMutation} from 'react-query';
+import {useRouter} from 'next/router';
+
 
 const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
 
 const makeUrl = (path) => `${API_HOST}${path}`;
 
-const postSession = (request) => fetch(makeUrl('/sessions'), {
-    method: 'POST',
-    body: request
-  })
-  .then(r => r.json())
-  .then(data => {
-    if (data.error) {
-      alert(data.error);
-    } else {
-      localStorage.setItem('jwtToken', data.jwt);
-    }
-  })
+const postSession = (router, request) => fetch(makeUrl('/sessions'), {
+  method: 'POST',
+  body: request
+})
+.then(r => r.json())
+.then(data => {
+  if (data.error) {
+    alert(data.error);
+  } else {
+    localStorage.setItem('jwtToken', data.jwt);
+    router.push(`/users/${data.user.id}`)
+  }
+})
 
 export default function AuthModal(props) {
   const [code, setCode] = React.useState('');
   const [number, setNumber] = React.useState('');
+
+  const router = useRouter();
     
   const clearFields = () => {
     setNumber('');
@@ -40,7 +45,7 @@ export default function AuthModal(props) {
   }
 
   const createSession = (req) => {
-    postSession(req);
+    postSession(router, req);
   }
   const [mutate] = useMutation(createSession)
 
@@ -98,5 +103,4 @@ export default function AuthModal(props) {
       </ModalContent>
     </Modal>
   )
-
 }
