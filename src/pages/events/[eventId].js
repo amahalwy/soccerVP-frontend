@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
-import { getEvent } from '../../utils/api';
+// import { getEvent } from '../../utils/api';
 import {
   Box, 
   Flex,
@@ -9,6 +9,17 @@ import {
 } from "@chakra-ui/core";
 import TopCards from '../../components/TopCards';
 import BottomCards from '../../components/BottomCards';
+
+
+const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
+
+const makeUrl = (path) => `${API_HOST}${path}`;
+
+export const getEvent = (key, id) => fetch(makeUrl(`/events/${id}`), {
+  headers: {
+    Authorization: localStorage.jwtToken,
+  }
+}).then(r => r.json())
 
 const Event = () => {
   const router = useRouter();

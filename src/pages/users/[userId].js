@@ -41,13 +41,13 @@ export default function User() {
           We hope you enjoy your experience.
         </Heading>
       </Flex>
-      <Flex mt='60px' w='100%'>
+      <Flex mt='60px' w='100%' justifyContent='center'>
         <Box w='50%'>
-          <ProfileFeature title={'Your Profile'}/>
+          <ProfileFeature title={'Your Profile'} w='80%'/>
         </Box>
-        <Box>
-          <ListFeature title={"Upcoming Events"} />
-          <ListFeature title={"Checkout history"} />
+        <Box w='40%'>
+          <ListFeature title={"Upcoming Events"} w='100%'/>
+          <ListFeature title={"Checkout history"} w='100%' />
         </Box>
       </Flex>
     </Box>

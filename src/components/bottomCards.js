@@ -31,33 +31,40 @@ export default function topCards(data) {
       <Box p='30px' m='10px' shadow="lg" borderWidth="1px" flex="1" rounded="lg" {...rest}>
         <Heading fontSize={24}>{title}</Heading>
         <Text mt={4} mb='10px' fontSize={20}>{desc}</Text>
+
         <PayPalButton
           shippingPreference="NO_SHIPPING"
           client-id='sb'
           createOrder={(data, actions) => {
-          return actions.order.create({
-            purchase_units: [{
-              amount: {
-                currency_code: "USD",
-                value: newData.cost_per_participant
-              }
-            }],
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  currency_code: "USD",
+                  value: newData.cost_per_participant
+                }
+              }],
             });
           }}
+
           onApprove={(data, actions) => {
-          // Capture the funds from the transaction
-            return actions.order.capture().then(function(details) {
-              // Show a success message to your buyer
-              alert("Transaction completed by " + details.payer.name.given_name);
+            console.log(actions.order.capture)
+            // return actions.order.capture().then(function(details) {
+            //   // Show a success message to your buyer
+            //   console.log("SOMETHING HAPPENED!!!!")
+            //   alert("Transaction completed by " + details.payer.name.given_name);
   
-              // OPTIONAL: Call your server to save the transaction
-              return fetch("/paypal-transaction-complete", {
-                method: "post",
-                body: JSON.stringify({
-                  orderID: data.orderID
-                })
-              });
-            });
+            //   // OPTIONAL: Call your server to save the transaction
+            //   return fetch("/paypal-transaction-complete", {
+            //     method: "post",
+            //     body: JSON.stringify({
+            //       orderID: data.orderID
+            //     })
+            //   });
+            // });
+          }}
+          
+          onError={(err) => {
+            console.log(err)
           }}
 
           // onSuccess={(details, data) => {

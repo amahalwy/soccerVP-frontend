@@ -10,6 +10,15 @@
   display: none;
 }
 
+.feature-list {
+  opacity: 50%;
+}
+
+.feature-list:hover {
+  opacity: 100%;
+}
+
 .feature-list:hover .pf-ft-list {
   display: block;
+  opacity: 100%;
 }

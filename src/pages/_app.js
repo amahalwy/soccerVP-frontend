@@ -57,7 +57,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <Head>
-        <script src="https://www.paypal.com/sdk/js?client-id=sb" />
+        <title>SoccerVP</title>
+
+        {/* <script src="https://www.paypal.com/sdk/js?client-id=Aadlj71Rm2jESJjR1RNen8CSn6Yc3cSNRhRZmbIHAz1CzFOJuD59ICkbS9XxEvwv0DpAhpQ8_1YyJZGR&currency=USD" /> */}
       </Head>
       <CSSReset />
       <GlobalStyle />
