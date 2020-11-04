@@ -2,18 +2,45 @@ import React from 'react'
 import Search from '../components/search';
 import {
   Box,
-  Image
+  Flex,
+  Heading,
+  Image,
+  Text
 } from '@chakra-ui/core'
 
 const Home = () => {
   return (
-    <Box h="100%" >
-      <Box 
-        h='852px' 
-        backgroundColor='#eee'
-        // opacity='0.5'
-        zIndex='1'
-      >
+    <Box h="100vh" 
+      backgroundColor='#eee'
+      zIndex='1'
+    >
+      <Box m='5% 0'>
+        <Flex justifyContent='center' mt='1%'>
+          <Heading fontSize='60px'>
+            Welcome to SoccerVP
+          </Heading>
+        </Flex>
+        <Flex justifyContent='center' >
+          <Heading fontSize='40px' >
+            Create an event or login below
+          </Heading>
+        </Flex>
+      </Box>
+
+      <Box>
+        <Flex h='400px'>
+          <Flex 
+            className='home-cards'
+          >
+            <Heading m='auto' color='white' fontSize="xl">Create an event here</Heading>
+          </Flex>
+
+          <Flex 
+            className='home-cards'
+          >
+            <Heading m='auto' color='white' fontSize="xl">Log in here</Heading>
+          </Flex>
+        </Flex>
       </Box>
     </Box>
   )

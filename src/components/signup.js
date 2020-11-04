@@ -21,7 +21,7 @@ const makeUrl = (path) => `${API_HOST}${path}`;
 const postUser = (user) => fetch(makeUrl('/users'), {
   method: 'POST',
   headers: {
-    Authorization: '... get the localStorage JWT key ...',
+    Authorization: localStorage.jwtToken,
   },
   body: user
 }).then(r => r.json())
@@ -47,7 +47,6 @@ export default function Signup(props) {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-
     const user = new FormData();
     user.append("user[first_name]", firstName);
     user.append("user[last_name]", lastName);

@@ -7,6 +7,7 @@ import { Hydrate } from 'react-query/hydration'
 import Head from 'next/head'
 import Nav from '../components/nav';
 import '../styles/styles.css';
+import "react-datetime/css/react-datetime.css";
 
 const queryCache = new QueryCache();
 
@@ -42,7 +43,7 @@ const makeUrl = (path) => `${API_HOST}${path}`;
 
 function MyApp({ Component, pageProps }) {
 
-  if (typeof window !== "undefined") {
+  if (typeof window !== "undefined" && localStorage.jwtToken === undefined) {
     const getCurrentUser = (key, access_token) => fetch(makeUrl('/current_user'), {
       headers: {
         Authorization: localStorage.jwtToken
@@ -52,6 +53,7 @@ function MyApp({ Component, pageProps }) {
     const { isLoading, error, data } = useQuery(['user'], getCurrentUser);
     if (isLoading) return 'Loading...';
     if (error) return 'An error has occurred: ' + error.message;
+    localStorage.setItem('currentUserId', data.id);
   }
 
   return (

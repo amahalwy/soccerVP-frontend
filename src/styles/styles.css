@@ -22,3 +22,37 @@
   display: block;
   opacity: 100%;
 }
+
+.home-cards {
+  margin: auto;
+  padding: 5; 
+  background: #319795;
+  width: 30%;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 12px 12px 1px rgba(0, 0, 0, 0.4);
+}
+
+.home-cards:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.rdt {
+  height: 40px;
+  width: 100%;
+}
+
+.rdt:first-child {
+  margin-right: 10px;
+}
+
+.form-control {
+  height: 100%;
+  width: 100%;
+  /* margin-left: 20px; */
+  border: 1px solid #E2E8F0;
+  border-radius: 5px;
+  padding: 0px 16px
+}

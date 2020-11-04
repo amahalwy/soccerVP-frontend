@@ -29,6 +29,7 @@ const postSession = (router, request) => fetch(makeUrl('/sessions'), {
     alert(data.error);
   } else {
     localStorage.setItem('jwtToken', data.jwt);
+    // localStorage.setItem('currentUser', data.user.id);
     router.push(`/users/${data.user.id}`)
   }
 })

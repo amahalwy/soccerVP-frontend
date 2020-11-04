@@ -20,6 +20,10 @@ export default function NavMenu(props) {
     props.showLogin();
   }
 
+  const showCreate = () => {
+    props.showCreate();
+  }
+
   if (typeof window !== "undefined") {
     if (localStorage.jwtToken !== undefined) {
       return(
@@ -29,6 +33,7 @@ export default function NavMenu(props) {
           </MenuButton>
           <MenuList>
             <MenuItem color='black'>Home</MenuItem>
+            <MenuItem color='black' onClick={showCreate}>Create Event</MenuItem>
             <MenuItem color='black' onClick={showSignup}>Signup</MenuItem>
             <MenuItem color='black' onClick={showLogin}>Login</MenuItem>
           </MenuList>
@@ -44,6 +49,7 @@ export default function NavMenu(props) {
       </MenuButton>
       <MenuList>
         <MenuItem color='black'>Home</MenuItem>
+        <MenuItem color='black' onClick={showCreate}>Create Event</MenuItem>
         <MenuItem color='black' onClick={showSignup}>Signup</MenuItem>
         <MenuItem color='black' onClick={showLogin}>Login</MenuItem>
       </MenuList>

@@ -11,6 +11,7 @@ import { Box, Heading, Flex, Text, Button,Modal,
 import {useSelector} from 'react-redux';
 import Login from '../components/login';
 import Signup from '../components/signup';
+import Create from '../components/CreateEvent'
 import NavMenu from './NavMenu';
 import AuthModal from './AuthModal';
 
@@ -35,7 +36,6 @@ export default function Navbar(props) {
   }
 
   const [openSignupModal, setSignup] = React.useState(false);
-
   const showSignup = () => {
     setSignup(true);
   }
@@ -51,6 +51,15 @@ export default function Navbar(props) {
 
   const closeAuth = () => {
     setAuth(false);
+  }
+
+  const [openCreate, setCreate] = React.useState(false);
+   const showCreate = () => {
+    setCreate(true);
+  }
+
+  const closeCreate = () => {
+    setCreate(false);
   }
 
   return (
@@ -103,10 +112,11 @@ export default function Navbar(props) {
 
       <Signup openSignupModal={openSignupModal} closeSignup={closeSignup} showAuth={showAuth} />
       <Login openLoginModal={openLoginModal} closeLogin={closeLogin} showAuth={showAuth}/>
+      <Create openCreate={openCreate} closeCreate={closeCreate} showAuth={showAuth}/>
       <AuthModal openAuth={openAuth} closeAuth={closeAuth} />
 
-      <NavMenu showSignup={showSignup} showLogin={showLogin} bg="transparent" border="1px"/>
-       {/*showCreate={showCreate}*/}
+      <NavMenu showSignup={showSignup} showLogin={showLogin} showCreate={showCreate} bg="transparent" border="1px"/>
+       
 
     </Flex>
   );
