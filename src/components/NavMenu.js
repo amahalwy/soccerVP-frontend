@@ -9,8 +9,10 @@ import {
   MenuOptionGroup,
   MenuItemOption,
 } from "@chakra-ui/core";
+import { useRouter } from 'next/router';
 
 export default function NavMenu(props) {
+  const router = useRouter();
 
   const showLogin = () => {
     props.showLogin();
@@ -21,15 +23,19 @@ export default function NavMenu(props) {
   }
 
   const logout = () => {
-    if (localStorage.jwtToken && localStorage.currentUserId !== undefined) {
+    if (localStorage.jwtToken) {
       localStorage.removeItem('jwtToken');
-      localStorage.setItem('currentUserId', undefined);
+      localStorage.removeItem('currentUser');
+      router.push(`/`)
     }
+    return;
   }
 
+  if (typeof window === 'undefined') return '';
+
   if (typeof window !== "undefined") {
-    if (localStorage.currentUserId !== "undefined") {
-      return(
+    if (localStorage.jwtToken !== undefined) {
+      return (
         <Menu>
           <MenuButton as={Button} rightIcon="chevron-down" color='black'>
             *Menu logo*
@@ -41,18 +47,20 @@ export default function NavMenu(props) {
           </MenuList>
         </Menu>
       )  
-    } 
+    } else if (localStorage.jwtToken === undefined) {
+      return (
+        <Menu>
+          <MenuButton as={Button} rightIcon="chevron-down" color='black'>
+            *Menu logo*
+          </MenuButton>
+          <MenuList>
+            <MenuItem color='black'>Home</MenuItem>
+            <MenuItem id='login-button' color='black' onClick={showLogin}>Login</MenuItem>
+          </MenuList>
+        </Menu>
+      )
+    }
   }
+  
 
-  return(
-    <Menu>
-      <MenuButton as={Button} rightIcon="chevron-down" color='black'>
-        *Menu logo*
-      </MenuButton>
-      <MenuList>
-        <MenuItem color='black'>Home</MenuItem>
-        <MenuItem id='login-button' color='black' onClick={showLogin}>Login</MenuItem>
-      </MenuList>
-    </Menu>
-  )
 }

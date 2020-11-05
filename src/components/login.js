@@ -12,18 +12,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/core";
 import { useMutation } from 'react-query';
-
-const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
-
-const makeUrl = (path) => `${API_HOST}${path}`;
-
-const postUser = (user) => fetch(makeUrl('/users'), {
-    method: 'POST',
-    headers: {
-      Authorization: localStorage.jwtToken,
-    },
-    body: user
-  }).then(r => r.json())
+import { postUser } from '../utils/api';
 
 export default function Login(props) {
   const [number, setNumber] = React.useState('');

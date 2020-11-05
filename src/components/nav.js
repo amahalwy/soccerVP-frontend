@@ -14,7 +14,7 @@ import Create from '../components/CreateEvent'
 import NavMenu from './NavMenu';
 import AuthModal from './AuthModal';
 import { useQuery } from 'react-query';
-import { getCurrentUser } from '../utils/api';
+// import { getCurrentUser } from '../utils/api';
 
 const MenuItems = ({ children }) => (
   <Text mt={{ base: 4, md: 0 }} mr={6} display="block">
@@ -62,12 +62,14 @@ export default function Navbar(props) {
     setCreate(false);
   }
 
-  const { isLoading, error, data } = useQuery(['user'], getCurrentUser, {
-    enabled: typeof window !== "undefined" && localStorage.jwtToken === undefined,
-    onSuccess: function(data) {
-      localStorage.setItem('currentUserId', data.id);
-    }
-  });
+  // const { isLoading, error, data } = useQuery('user', getCurrentUser, {
+  //   enabled: typeof window !== "undefined" && localStorage.jwtToken === undefined,
+  //   onSuccess: function(data) {
+  //     console.log('success');
+  //     console.log(data);
+  //   }
+  // });
+
 
   return (
     <Flex

@@ -11,28 +11,9 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/core";
-import {useMutation} from 'react-query';
-import {useRouter} from 'next/router';
-
-
-const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
-
-const makeUrl = (path) => `${API_HOST}${path}`;
-
-const postSession = (router, request) => fetch(makeUrl('/sessions'), {
-  method: 'POST',
-  body: request
-})
-.then(r => r.json())
-.then(data => {
-  if (data.error) {
-    alert(data.error);
-  } else {
-    localStorage.setItem('jwtToken', data.jwt);
-    // localStorage.setItem('currentUser', data.user.id);
-    router.push(`/users/${data.user.id}`)
-  }
-})
+import { useMutation } from 'react-query';
+import { useRouter } from 'next/router';
+import { postSession } from '../utils/api';
 
 export default function AuthModal(props) {
   const [code, setCode] = React.useState('');

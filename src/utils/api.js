@@ -14,18 +14,31 @@ export const getUser = (key, id) => fetch(makeUrl(`/users/${id}`), {
   }
 }).then(r => r.json())
 
-export const postUser = (key, user) => fetch(makeUrl('/users'), {
+export const postUser = (user) => fetch(makeUrl('/users'), {
   method: 'POST',
   headers: {
-    Authorization: '... get the localStorage JWT key ...',
+    Authorization: localStorage.jwtToken,
   },
   body: user
 }).then(r => r.json())
 
+// export const getCurrentUser = (key, token) => fetch(makeUrl(`/current_user`), {
+//   headers: {
+//     Authorization: {token}
+//   }
+// }).then(r => r.json())
 
-export const getCurrentUser = (key, token) => fetch(makeUrl(`/users/current_user`), {
-  headers: {
-    Authorization: {token}
+export const postSession = (router, request) => fetch(makeUrl('/sessions'), {
+  method: 'POST',
+  body: request
+})
+.then(r => r.json())
+.then(data => {
+  if (data.error) {
+    alert(data.error);
+  } else {
+    localStorage.setItem('jwtToken', data.jwt);
+    localStorage.setItem('currentUser', data.user);
+    router.push(`/users/${data.user.id}`)
   }
-}).then(r => r.json())
-
+})

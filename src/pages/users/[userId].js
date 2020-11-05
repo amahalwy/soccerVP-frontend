@@ -8,26 +8,19 @@ import {
   List,
   ListItem,
 } from '@chakra-ui/core';
-import {ProfileFeature, ListFeature} from '../../components/PageCards';
-// import {getUser} from '../../utils/api';
-
-const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
-const makeUrl = (path) => `${API_HOST}${path}`;
-
-export const getUser = (key, id) => fetch(makeUrl(`/users/${id}`), {
-  headers: {
-    Authorization: '... get the localStorage JWT key ...',
-  }
-}).then(r => r.json())
+import { ProfileFeature, ListFeature } from '../../components/PageCards';
+import { getUser } from '../../utils/api';
 
 export default function User() {
 
   const router = useRouter();
-  const { isLoading, error, data } = useQuery(['user', router.query.userId], getUser)
+  const { isLoading, error, data } = useQuery(['user', router.query.userId], getUser, {
+    // enabled: router.query.userId !== null || router.query.userId !== "null"
+  })
   if (isLoading) return 'Loading...';
   if (error) return 'An error has occurred: ' + error.message;
 
-  const user = data.user
+  const user = data
 
   return (
     <Box backgroundColor='#eee' h='100vh'>
