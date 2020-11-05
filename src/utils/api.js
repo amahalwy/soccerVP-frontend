@@ -1,5 +1,3 @@
-import { sendData } from "next/dist/next-server/server/api-utils";
-
 const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
 
 const makeUrl = (path) => `${API_HOST}${path}`;

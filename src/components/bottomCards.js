@@ -7,6 +7,7 @@ import {
   Text, 
 } from "@chakra-ui/core";
 import PaypalButton from './PaypalButton';
+// import Paybutton from './PayButton';
 
 export default function BottomCards(data) { 
   const newData = data.data;
@@ -62,7 +63,7 @@ export default function BottomCards(data) {
         <Heading fontSize={24}>{title}</Heading>
         <Text mt={4} mb='10px' fontSize={20}>{desc}</Text>
 
-        
+        {/* <Paybutton />         */}
         <PaypalButton data={newData} />
       </Box>
     );

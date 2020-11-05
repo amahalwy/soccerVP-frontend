@@ -1,4 +1,4 @@
-<script dangerouslySetInnerHTML={{ __html: 
+{/* <script dangerouslySetInnerHTML={{ __html: 
 
   paypal.Button.render({
     // Configure environment
@@ -38,4 +38,4 @@
     }
   }, '#paypal-button')
 
-}} />
+}} /> */}

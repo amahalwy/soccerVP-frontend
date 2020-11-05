@@ -21,12 +21,14 @@ export default function NavMenu(props) {
   }
 
   const logout = () => {
-    localStorage.removeItem('jwtToken');
-    localStorage.removeItem('currentUserId');
+    if (localStorage.jwtToken && localStorage.currentUserId !== undefined) {
+      localStorage.removeItem('jwtToken');
+      localStorage.setItem('currentUserId', undefined);
+    }
   }
 
   if (typeof window !== "undefined") {
-    if (localStorage.currentUserId !== "null") {
+    if (localStorage.currentUserId !== "undefined") {
       return(
         <Menu>
           <MenuButton as={Button} rightIcon="chevron-down" color='black'>

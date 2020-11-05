@@ -7,23 +7,15 @@ import {
   Flex,
   Heading
 } from "@chakra-ui/core";
+import { getEvent } from '../../utils/api';
 import TopCards from '../../components/TopCards';
 import BottomCards from '../../components/BottomCards';
 
-
-const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
-
-const makeUrl = (path) => `${API_HOST}${path}`;
-
-export const getEvent = (key, id) => fetch(makeUrl(`/events/${id}`), {
-  headers: {
-    Authorization: localStorage.jwtToken,
-  }
-}).then(r => r.json())
-
 const Event = () => {
   const router = useRouter();
-  const { isLoading, error, data } = useQuery(['event', router.query.eventId], getEvent);
+  const { isLoading, error, data } = useQuery(['event', router.query.eventId], getEvent, {
+    enabled: router.query.eventId !== undefined || router.query.eventId !== null 
+  });
   if (isLoading) return 'Loading...';
   if (error) return 'An error has occurred: ' + error.message;
 

@@ -8,12 +8,13 @@ import { Box, Heading, Flex, Text, Button,Modal,
   ModalCloseButton,
   useDisclosure
 } from "@chakra-ui/core";
-import {useSelector} from 'react-redux';
 import Login from '../components/login';
 import Signup from '../components/signup';
 import Create from '../components/CreateEvent'
 import NavMenu from './NavMenu';
 import AuthModal from './AuthModal';
+import { useQuery } from 'react-query';
+import { getCurrentUser } from '../utils/api';
 
 const MenuItems = ({ children }) => (
   <Text mt={{ base: 4, md: 0 }} mr={6} display="block">
@@ -61,6 +62,13 @@ export default function Navbar(props) {
   const closeCreate = () => {
     setCreate(false);
   }
+
+  const { isLoading, error, data } = useQuery(['user'], getCurrentUser, {
+    enabled: typeof window !== "undefined" && localStorage.jwtToken === undefined,
+    onSuccess: function(data) {
+      localStorage.setItem('currentUserId', data.id);
+    }
+  });
 
   return (
     <Flex
