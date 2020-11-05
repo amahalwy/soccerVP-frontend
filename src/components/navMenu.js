@@ -12,10 +12,6 @@ import {
 
 export default function NavMenu(props) {
 
-  const showSignup = () => {
-    props.showSignup();
-  }
-
   const showLogin = () => {
     props.showLogin();
   }
@@ -24,8 +20,13 @@ export default function NavMenu(props) {
     props.showCreate();
   }
 
+  const logout = () => {
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('currentUserId');
+  }
+
   if (typeof window !== "undefined") {
-    if (localStorage.jwtToken !== undefined) {
+    if (localStorage.currentUserId !== "null") {
       return(
         <Menu>
           <MenuButton as={Button} rightIcon="chevron-down" color='black'>
@@ -34,12 +35,11 @@ export default function NavMenu(props) {
           <MenuList>
             <MenuItem color='black'>Home</MenuItem>
             <MenuItem color='black' onClick={showCreate}>Create Event</MenuItem>
-            <MenuItem color='black' onClick={showSignup}>Signup</MenuItem>
-            <MenuItem color='black' onClick={showLogin}>Login</MenuItem>
+            <MenuItem color='black' onClick={logout}>Logout</MenuItem>
           </MenuList>
         </Menu>
       )  
-    }
+    } 
   }
 
   return(
@@ -49,8 +49,6 @@ export default function NavMenu(props) {
       </MenuButton>
       <MenuList>
         <MenuItem color='black'>Home</MenuItem>
-        <MenuItem color='black' onClick={showCreate}>Create Event</MenuItem>
-        <MenuItem color='black' onClick={showSignup}>Signup</MenuItem>
         <MenuItem color='black' onClick={showLogin}>Login</MenuItem>
       </MenuList>
     </Menu>

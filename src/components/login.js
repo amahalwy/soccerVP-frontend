@@ -20,14 +20,14 @@ const makeUrl = (path) => `${API_HOST}${path}`;
 const postUser = (user) => fetch(makeUrl('/users'), {
     method: 'POST',
     headers: {
-      Authorization: '... get the localStorage JWT key ...',
+      Authorization: localStorage.jwtToken,
     },
     body: user
   }).then(r => r.json())
 
 export default function Login(props) {
   const [number, setNumber] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  // const [password, setPassword] = React.useState('');
 
   const createUser = (user) => {
     postUser(user)
@@ -44,7 +44,7 @@ export default function Login(props) {
 
     const user = new FormData();
     user.append("user[phone_number]", number);
-    user.append("user[password]", password);
+    // user.append("user[password]", password);
 
     try {
       await mutate(user)
@@ -56,7 +56,7 @@ export default function Login(props) {
 
   const clearFields = () => {
     setNumber('');
-    setPassword('');
+    // setPassword('');
   }
 
   return (
@@ -83,16 +83,16 @@ export default function Login(props) {
                   onChange={e => setNumber(e.currentTarget.value)} 
                 />
               </Box>
-              <Box m='20px 0px'>
+              {/* <Box m='20px 0px'>
                 <Input
                   value={password} placeholder='Password' type="password"
                   onChange={e => setPassword(e.currentTarget.value)} 
                   />
-              </Box>
+              </Box> */}
             </Box>
             <Box mb='5px'>
               <Flex justifyContent='center' mb='20px' >
-                <Button w='100%' onClick={handleLogin}>Log me in!</Button>
+                <Button w='100%' onClick={handleLogin}>Send a One-Time-Password</Button>
               </Flex>
               <Box fontSize='14px'>
                 <p>Don't have an account? <strong>Sign up</strong></p>

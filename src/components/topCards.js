@@ -7,9 +7,8 @@ import {
   Text, 
  } from "@chakra-ui/core";
 
-export default function topCards(data) {
+export default function TopCards(data) {
    
-  // PR req
   const newData = data.data;
   
   const location = `We'll be playing at ${newData.location}. Make sure you check the weather!`;

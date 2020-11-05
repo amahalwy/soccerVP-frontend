@@ -43,18 +43,22 @@ const makeUrl = (path) => `${API_HOST}${path}`;
 
 function MyApp({ Component, pageProps }) {
 
-  if (typeof window !== "undefined" && localStorage.jwtToken === undefined) {
-    const getCurrentUser = (key, access_token) => fetch(makeUrl('/current_user'), {
-      headers: {
-        Authorization: localStorage.jwtToken
-      },
-      access_token
-    }).then(r => r.json())
-    const { isLoading, error, data } = useQuery(['user'], getCurrentUser);
-    if (isLoading) return 'Loading...';
-    if (error) return 'An error has occurred: ' + error.message;
-    localStorage.setItem('currentUserId', data.id);
-  }
+  if (typeof window !== "undefined") {
+    if (localStorage.jwtToken !== undefined) {
+      const getCurrentUser = (key, access_token) => fetch(makeUrl('/current_user'), {
+        headers: {
+          Authorization: localStorage.jwtToken
+        },
+        access_token
+      }).then(r => r.json())
+      const { isLoading, error, data } = useQuery(['user'], getCurrentUser);
+      if (isLoading) return 'Loading...';
+      if (error) return 'An error has occurred: ' + error.message;
+      localStorage.setItem('currentUserId', data.id);
+    } else {
+      localStorage.setItem('currentUserId', null);
+    }
+  } 
 
   return (
     <ThemeProvider theme={theme}>
@@ -62,6 +66,11 @@ function MyApp({ Component, pageProps }) {
         <title>SoccerVP</title>
 
         {/* <script src="https://www.paypal.com/sdk/js?client-id=Aadlj71Rm2jESJjR1RNen8CSn6Yc3cSNRhRZmbIHAz1CzFOJuD59ICkbS9XxEvwv0DpAhpQ8_1YyJZGR&currency=USD" /> */}
+        {/* <script src="https://www.paypal.com/sdk/js?client-id=sb"></script> */}
+
+
+        {/* <script src="https://www.paypal.com/sdk/js?client-id=sb"></script> */}
+        
       </Head>
       <CSSReset />
       <GlobalStyle />
