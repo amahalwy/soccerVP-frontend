@@ -27,7 +27,6 @@ export default function Navbar(props) {
   const handleToggle = () => setShow(!show);
 
   const [openLoginModal, setLogin] = React.useState(false);
-  
   const showLogin = () => {
     setLogin(true);
   }

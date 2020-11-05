@@ -9,6 +9,12 @@ import {
 } from '@chakra-ui/core'
 
 const Home = () => {
+
+  const openLogin = () => {
+    const login = document.querySelector('#login-button');
+    console.log(login)
+  }
+
   return (
     <Box h="100vh" 
       backgroundColor='#eee'
@@ -37,6 +43,7 @@ const Home = () => {
 
           <Flex 
             className='home-cards'
+             onClick={openLogin}
           >
             <Heading m='auto' color='white' fontSize="xl">Log in here</Heading>
           </Flex>
