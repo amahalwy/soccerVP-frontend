@@ -1,11 +1,12 @@
+button:focus {
+  outline: none;
+}
+
 .show {
   display: block;
 }
 
-.hidden {
-  display: none;
-}
-
+.hidden,
 .pf-ft-list {
   display: none;
 }

@@ -18,6 +18,10 @@ export default function NavMenu(props) {
     props.showLogin();
   }
 
+  const showSignup = () => {
+    props.showSignup();
+  }
+
   const showCreate = () => {
     props.showCreate();
   }
@@ -55,7 +59,8 @@ export default function NavMenu(props) {
           </MenuButton>
           <MenuList>
             <MenuItem color='black'>Home</MenuItem>
-            <MenuItem id='login-button' color='black' onClick={showLogin}>Login</MenuItem>
+            <MenuItem color='black' onClick={showSignup}>Signup</MenuItem>
+            <MenuItem color='black' onClick={showLogin}>Login</MenuItem>
           </MenuList>
         </Menu>
       )
