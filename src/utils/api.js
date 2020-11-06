@@ -1,4 +1,4 @@
-const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
+const API_HOST = process.env.NODE_ENV === 'production' ? 'https://soccer-vp-frontend.vercel.app/' : 'http://localhost:5000';
 
 const makeUrl = (path) => `${API_HOST}${path}`;
 
@@ -38,7 +38,7 @@ export const postSession = (router, request) => fetch(makeUrl('/sessions'), {
     alert(data.error);
   } else {
     localStorage.setItem('jwtToken', data.jwt);
-    localStorage.setItem('currentUser', data.user);
+    localStorage.setItem('currentUser', JSON.stringify(data.user));
     router.push(`/users/${data.user.id}`)
   }
 })
