@@ -3,7 +3,7 @@ const API_HOST = process.env.NODE_ENV === 'production' ? 'https://soccer-vp-back
 const makeUrl = (path) => `${API_HOST}${path}`;
 
 export const getEvent = (key, id) => fetch(makeUrl(`/events/${id}`), {
-  headers: {
+  mode: {
     Authorization: '... get the localStorage JWT key ...',
     "Access-Control-Allow-Origin": '*',
     "Host": 'https://soccer-vp-backend.vercel.app',
@@ -14,21 +14,19 @@ export const getEvent = (key, id) => fetch(makeUrl(`/events/${id}`), {
 export const getUser = (key, id) => fetch(makeUrl(`/users/${id}`), {
   headers: {
     Authorization: '... get the localStorage JWT key ...',
-    "Access-Control-Allow-Origin": '*',
-    "Host": 'https://soccer-vp-backend.vercel.app',
-    Origin: 'https://soccer-vp-frontend.vercel.app'
   }
 }).then(r => r.json())
 
 export const postUser = (user) => fetch(makeUrl('/users'), {
   method: 'POST',
+  body: user,
   headers: {
-    // Authorization: localStorage.jwtToken,
+    // Authorization: '... get the localStorage JWT key ...',
     "Access-Control-Allow-Origin": '*',
-    Host: 'https://soccer-vp-backend.vercel.app',
-    Origin: 'https://soccer-vp-frontend.vercel.app'
+    "Host": 'https://soccer-vp-backend.vercel.app',
+    "Origin": 'https://soccer-vp-frontend.vercel.app'
   },
-  body: user
+  mode: no-cors
 }).then(r => r.json())
 
 // export const getCurrentUser = (key, token) => fetch(makeUrl(`/current_user`), {
