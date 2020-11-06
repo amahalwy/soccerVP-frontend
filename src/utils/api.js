@@ -26,7 +26,7 @@ export const postUser = (user) => fetch(makeUrl('/users'), {
     "Host": 'https://soccer-vp-backend.vercel.app',
     "Origin": 'https://soccer-vp-frontend.vercel.app'
   },
-  mode: no-cors
+  mode: 'no-cors'
 }).then(r => r.json())
 
 // export const getCurrentUser = (key, token) => fetch(makeUrl(`/current_user`), {
