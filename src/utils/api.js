@@ -1,4 +1,4 @@
-const API_HOST = process.env.NODE_ENV === 'production' ? 'https://soccervp-backend.herokuapp.com/' : 'http://localhost:5000';
+const API_HOST = process.env.NODE_ENV === 'production' ? 'https://soccervp-backend.herokuapp.com' : 'http://localhost:5000';
 
 const makeUrl = (path) => `${API_HOST}${path}`;
 
