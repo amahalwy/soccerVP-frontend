@@ -5,14 +5,14 @@ const makeUrl = (path) => `${API_HOST}${path}`;
 export const getEvent = (key, id) => fetch(makeUrl(`/events/${id}`), {
   headers: {
     Authorization: '... get the localStorage JWT key ...',
-    "Access-Control-Allow-Origin": 'https://soccer-vp-backend.vercel.app'
+    "Access-Control-Allow-Origin": 'https://soccer-vp-frontend.vercel.app'
   }
 }).then(r => r.json())
 
 export const getUser = (key, id) => fetch(makeUrl(`/users/${id}`), {
   headers: {
     Authorization: '... get the localStorage JWT key ...',
-    "Access-Control-Allow-Origin": 'https://soccer-vp-backend.vercel.app'
+    "Access-Control-Allow-Origin": 'https://soccer-vp-frontend.vercel.app'
   }
 }).then(r => r.json())
 
@@ -20,7 +20,7 @@ export const postUser = (user) => fetch(makeUrl('/users'), {
   method: 'POST',
   headers: {
     Authorization: localStorage.jwtToken,
-    "Access-Control-Allow-Origin": 'https://soccer-vp-backend.vercel.app'
+    "Access-Control-Allow-Origin": 'https://soccer-vp-frontend.vercel.app'
   },
   body: user
 }).then(r => r.json())
