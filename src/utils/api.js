@@ -16,17 +16,17 @@ export const getUser = (key, id) => fetch(makeUrl(`/users/${id}`), {
     Authorization: '... get the localStorage JWT key ...',
     "Access-Control-Allow-Origin": '*',
     "Host": 'https://soccer-vp-backend.vercel.app',
-    "Origin": 'https://soccer-vp-frontend.vercel.app'
+    Origin: 'https://soccer-vp-frontend.vercel.app'
   }
 }).then(r => r.json())
 
 export const postUser = (user) => fetch(makeUrl('/users'), {
   method: 'POST',
   headers: {
-    Authorization: localStorage.jwtToken,
+    // Authorization: localStorage.jwtToken,
     "Access-Control-Allow-Origin": '*',
-    "Host": 'https://soccer-vp-backend.vercel.app',
-    "Origin": 'https://soccer-vp-frontend.vercel.app'
+    Host: 'https://soccer-vp-backend.vercel.app',
+    Origin: 'https://soccer-vp-frontend.vercel.app'
   },
   body: user
 }).then(r => r.json())
