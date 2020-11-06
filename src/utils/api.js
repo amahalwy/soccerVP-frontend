@@ -1,4 +1,4 @@
-const API_HOST = process.env.NODE_ENV === 'production' ? 'https://soccer-vp-backend.vercel.app' : 'http://localhost:5000';
+const API_HOST = process.env.NODE_ENV === 'production' ? 'https://soccer-vp-backend.vercel.app/api' : 'http://localhost:5000';
 
 const makeUrl = (path) => `${API_HOST}${path}`;
 
@@ -20,12 +20,6 @@ export const getUser = (key, id) => fetch(makeUrl(`/users/${id}`), {
 export const postUser = (user) => fetch(makeUrl('/users'), {
   method: 'POST',
   body: user,
-  headers: {
-    // Authorization: '... get the localStorage JWT key ...',
-    "Access-Control-Allow-Origin": '*',
-    "Host": 'https://soccer-vp-backend.vercel.app',
-    "Origin": 'https://soccer-vp-frontend.vercel.app'
-  },
   mode: 'no-cors'
 }).then(r => r.json())
 
