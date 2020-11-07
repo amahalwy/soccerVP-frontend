@@ -23,24 +23,19 @@ const GlobalStyle = () => {
         html {
           min-width: 360px;
           scroll-behavior: smooth;
-          background: #ddd;
+          background: #eee;
         }
 
         #__next {
           display: flex;
           flex-direction: column;
-          height: 970px;
-          background: white;
+          height: 100%;
+          background: #fff;
         }
       `}
     />
   );
 };
-
-const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
-
-const makeUrl = (path) => `${API_HOST}${path}`;
-
 
 function MyApp({ Component, pageProps }) {
 
@@ -51,7 +46,6 @@ function MyApp({ Component, pageProps }) {
 
         {/* <script src="https://www.paypal.com/sdk/js?client-id=Aadlj71Rm2jESJjR1RNen8CSn6Yc3cSNRhRZmbIHAz1CzFOJuD59ICkbS9XxEvwv0DpAhpQ8_1YyJZGR&currency=USD" /> */}
         <script src="https://www.paypalobjects.com/api/checkout.js"  data-log-level="error" />
-
         
       </Head>
       <CSSReset />

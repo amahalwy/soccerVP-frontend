@@ -125,7 +125,15 @@ export default function Signup(props) {
             </Box>
             <Box mb='5px'>
               <Flex justifyContent='center' mb='20px' >
-                <Button w='100%' onClick={handleSignup}>Get me started!</Button>
+                <div className="container-modal">
+                  <div>
+                    <Button _hover={{bg: 'none'}} onClick={handleSignup}>
+                      <span>
+                        Get me started!
+                      </span>
+                    </Button>
+                  </div>
+                </div>
               </Flex>
               <Box fontSize='14px'>
                 <p>Already have an account? <strong className='login-instead' onClick={openLogin}>Log in</strong></p>

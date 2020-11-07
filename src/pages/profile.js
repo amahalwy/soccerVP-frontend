@@ -23,7 +23,7 @@ export default function User() {
   }
 
   return (
-    <Box backgroundColor='#eee' h='100vh'>
+    <Box backgroundColor='#eee' h='846px'>
       <Flex justifyContent='center' mt='40px'>
         <Heading size="lg" fontSize="60px">
           Welcome to SoccerVP, {user.first_name}
@@ -40,10 +40,12 @@ export default function User() {
           {user.first_name}
         </Box>
         <Box w='40%'>
-          <ListFeature title={"Upcoming Events"} w='100%'/>
+          <ListFeature title={"Upcoming Events"} w='100%' mb='20px'/>
           <ListFeature title={"Checkout history"} w='100%' />
         </Box>
       </Flex>
     </Box>
   )
 }
+
+

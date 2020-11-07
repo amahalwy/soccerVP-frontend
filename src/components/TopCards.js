@@ -45,7 +45,18 @@ export default function TopCards(data) {
 
   function Feature({ title, desc, ...rest }) {
     return (
-      <Box p='30px' m='10px' shadow="lg" borderWidth="1px" flex="1" rounded="lg" {...rest}>
+      <Box 
+        p='30px' 
+        m='10px' 
+        shadow="lg" 
+        borderWidth="1px" 
+        flex="1" 
+        rounded="lg" 
+        border='none' 
+        bg='#319795' 
+        boxShadow='4px 4px 15px black'
+        {...rest}  
+      >
         <Heading fontSize={24}>{title}</Heading>
         <Text mt={4} fontSize={20}>{desc}</Text>
       </Box>
@@ -67,7 +78,7 @@ export default function TopCards(data) {
         </Flex>
         <Flex>
           <Feature
-            title="Player information"
+            title="Need-to-knows"
             desc={playerInfo}
           />
           <Feature

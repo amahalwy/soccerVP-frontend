@@ -114,7 +114,7 @@ export default function CreateEvent(props) {
 
               <Flex m='20px 0' w='100%'>
                 <Datetime
-                  inputProps={{placeholder: "Select date and start time"}}
+                  inputProps={{placeholder: "Start date and time"}}
                   onChange={e => setStart(e._d)}
                 />
                 <Datetime

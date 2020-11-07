@@ -23,7 +23,7 @@ const Home = () => {
     <Box h="100%" 
       backgroundColor='#ddd'
     >
-      <Box pos='relative' h='100%' w='100%'>
+      <Box pos='relative' h='90%' w='100%'>
         <Image src='https://facebook-clone-dev.s3.us-east-2.amazonaws.com/soccer-ad.jpeg' w='100%' mr='200px' className='soccer'/>
 
         <Box m='5% 0' pos='absolute' top='0px' left='100px'>
@@ -41,12 +41,16 @@ const Home = () => {
               </Text>
             </Heading>
           </Box>
-          <Box color='white' mt='350px'>
-            <Button variantColor="teal" h='70px' w='300px' borderRadius='10px' onClick={openLogin} boxShadow='4px 4px 10px black'>
-              <Text fontSize='30px' >
-                Get started here
-              </Text>
-            </Button>
+          <Box color='white' mt='380px' w='300px'>
+            <div className="container-modal">
+              <div>
+                <Button _hover={{bg: 'none'}} h='60px' fontSize='30px' onClick={openLogin} boxShadow='4px 4px 10px black'>
+                  <span>
+                    Get started here
+                  </span>
+                </Button>
+              </div>
+            </div>
           </Box>
         </Box>   
       </Box>
