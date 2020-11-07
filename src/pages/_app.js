@@ -23,12 +23,13 @@ const GlobalStyle = () => {
         html {
           min-width: 360px;
           scroll-behavior: smooth;
+          background: #ddd;
         }
 
         #__next {
           display: flex;
           flex-direction: column;
-          min-height: 100vh;
+          height: 970px;
           background: white;
         }
       `}

@@ -2,6 +2,8 @@ import React from 'react';
 import { 
   Box,
   Button,
+  Checkbox, 
+  CheckboxGroup,
   Flex,
   Input,
   Modal,
@@ -20,6 +22,7 @@ export default function Signup(props) {
   const [lastName, setLastName] = React.useState('');
   const [number, setNumber] = React.useState(null);
   const [email, setEmail] = React.useState('');
+  const [role, setRole] = React.useState(false);
 
   const createUser = (user) => {
     postUser(user)
@@ -38,6 +41,7 @@ export default function Signup(props) {
     user.append("user[last_name]", lastName);
     user.append("user[phone_number]", number);
     user.append("user[email]", email);
+    user.append("user[role]", role);
 
     try {
       await mutate(user)
@@ -52,6 +56,14 @@ export default function Signup(props) {
     setLastName('');
     setNumber('');
     setEmail('');
+  }
+
+  const toggleAdmin = () => {
+    if (role) {
+      setRole(false);
+    } else {
+      setRole(true);
+    }
   }
 
   return (
@@ -95,6 +107,11 @@ export default function Signup(props) {
                   value={email} placeholder="Email"
                   onChange={e => setEmail(e.currentTarget.value)} 
                 />
+              </Box>
+              <Box m='20px 0px'>
+                <Checkbox onChange={toggleAdmin}>
+                  Would you like admin role? (Admin's create events)
+                </Checkbox>
               </Box>
             </Box>
             <Box mb='5px'>

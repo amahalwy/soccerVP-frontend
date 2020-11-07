@@ -73,4 +73,29 @@ button:focus {
   border-radius: 10px;
 }
 
+.bar1-close, .bar2-close, .bar3-close {
+  width: 35px;
+  height: 5px;
+  background-color: #319795;
+  margin: 6px 0;
+  border-radius: 10px;
+}
+
+.bar1-close {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+  background-color: #319795;
+}
+
+.bar2-close {opacity: 0;}
+
+.bar3-close {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+  background-color: #319795;
+}
 /* End of nav menu styles */
+
+.soccer {
+  transform: scale(1.5) translate(-200px, 100px);
+}

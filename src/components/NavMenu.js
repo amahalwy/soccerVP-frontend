@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Button,
   Menu,
@@ -57,21 +58,49 @@ export default function NavMenu(props) {
       )  
     } else if (localStorage.jwtToken === undefined) {
       return (
+        // <Menu>
+        //   <MenuButton as={Button} color='black' mr='30px' borderRadius='10px' h='45px'>
+        //     <div className="container">
+        //       <div className="bar1"></div>
+        //       <div className="bar2"></div>
+        //       <div className="bar3"></div>
+        //     </div>
+        //   </MenuButton>
+        //   <MenuList mr='30px'>
+        //     <MenuItem color='black'>Home</MenuItem>
+        //     <MenuItem color='black' onClick={showSignup}>Signup</MenuItem>
+        //     <MenuItem id='login-button' color='black' onClick={showLogin}>Login</MenuItem>
+        //   </MenuList>
+        // </Menu>
         <Menu>
-          <MenuButton as={Button} color='black' mr='30px' borderRadius='10px' h='45px'>
-            <div className="container">
-              <div className="bar1"></div>
-              <div className="bar2"></div>
-              <div className="bar3"></div>
-            </div>
-          </MenuButton>
-          <MenuList mr='30px'>
-            <MenuItem color='black'>Home</MenuItem>
-            <MenuItem color='black' onClick={showSignup}>Signup</MenuItem>
-            <MenuItem color='black' onClick={showLogin}>Login</MenuItem>
-          </MenuList>
+          {({ isOpen }) => (
+            <React.Fragment>
+              <MenuButton isActive={isOpen} as={Button} color='black' mr='30px' borderRadius='10px' h='45px'>
+                {isOpen 
+                  ? 
+                <div className="container-close">
+                  <div className="bar1-close"></div>
+                  <div className="bar2-close"></div>
+                  <div className="bar3-close"></div>
+                </div> 
+                  : 
+                <div className="container">
+                  <div className="bar1"></div>
+                  <div className="bar2"></div>
+                  <div className="bar3"></div>
+                </div> 
+                }
+              </MenuButton>
+              <MenuList mr='30px'>
+                <MenuItem color='black'>Home</MenuItem>
+                <MenuItem color='black' onClick={showSignup}>Signup</MenuItem>
+                <MenuItem id='login-button' color='black' onClick={showLogin}>Login</MenuItem>
+              </MenuList>
+            </React.Fragment>
+          )}
         </Menu>
       )
     }
   }
 }
+

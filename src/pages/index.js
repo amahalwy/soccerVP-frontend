@@ -2,6 +2,7 @@ import React from 'react'
 import Search from '../components/search';
 import {
   Box,
+  Button,
   Flex,
   Heading,
   Image,
@@ -11,43 +12,39 @@ import {
 const Home = () => {
 
   const openLogin = () => {
-    const login = document.querySelector('#login-button');
-    console.log(login)
+    document.getElementById('menubutton-6').click()
+
+    setTimeout(() => {
+      document.getElementById('login-button').click();
+    }, 1);
   }
 
   return (
-    <Box h="100vh" 
-      backgroundColor='#eee'
-      zIndex='1'
+    <Box h="100%" 
+      backgroundColor='#ddd'
     >
-      <Box m='5% 0'>
-        <Flex justifyContent='center' mt='1%'>
-          <Heading fontSize='60px'>
-            Welcome to SoccerVP
-          </Heading>
-        </Flex>
-        <Flex justifyContent='center' >
-          <Heading fontSize='40px' >
-            Create an event or login below
-          </Heading>
-        </Flex>
-      </Box>
+      <Box pos='relative' h='100%' w='100%'>
+        <Image src='https://facebook-clone-dev.s3.us-east-2.amazonaws.com/soccer-ad.jpeg' w='100%' mr='200px' className='soccer'/>
 
-      <Box>
-        <Flex h='400px'>
-          <Flex 
-            className='home-cards'
-          >
-            <Heading m='auto' color='white' fontSize="xl">Create an event here</Heading>
+        <Box m='5% 0' pos='absolute' top='0px' left='100px'>
+          <Flex justifyContent='center' mt='1%'>
+            <Heading fontSize='100px' color='white'>
+              Welcome to SoccerVP
+            </Heading>
           </Flex>
-
-          <Flex 
-            className='home-cards'
-             onClick={openLogin}
-          >
-            <Heading m='auto' color='white' fontSize="xl">Log in here</Heading>
-          </Flex>
-        </Flex>
+          <Box>
+            <Heading fontSize='40px' color='white'>
+              Enjoy the ease of group managing soccer
+            </Heading>
+          </Box>
+          <Box color='white' mt='350px'>
+            <Button variantColor="teal" h='70px' w='300px' borderRadius='10px' onClick={openLogin}>
+              <Text fontSize='30px'>
+                Get started here
+              </Text>
+            </Button>
+          </Box>
+        </Box>   
       </Box>
     </Box>
   )
