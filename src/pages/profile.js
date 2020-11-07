@@ -8,19 +8,19 @@ import {
   List,
   ListItem,
 } from '@chakra-ui/core';
-import { ProfileFeature, ListFeature } from '../../components/PageCards';
-import { getUser } from '../../utils/api';
+import { ProfileFeature, ListFeature } from '../components/PageCards';
 
 export default function User() {
-
   const router = useRouter();
-  const { isLoading, error, data } = useQuery(['user', router.query.userId], getUser, {
-    // enabled: router.query.userId !== null || router.query.userId !== "null"
-  })
-  if (isLoading) return 'Loading...';
-  if (error) return 'An error has occurred: ' + error.message;
 
-  const user = data
+  let user = null;
+
+  if (typeof window === 'undefined') return '';
+  if (!localStorage.jwtToken) {
+    router.push('/')
+  } else {
+    user = JSON.parse(localStorage.currentUser)
+  }
 
   return (
     <Box backgroundColor='#eee' h='100vh'>
@@ -37,6 +37,7 @@ export default function User() {
       <Flex mt='60px' w='100%' justifyContent='center'>
         <Box w='50%'>
           <ProfileFeature title={'Your Profile'} w='80%'/>
+          {user.first_name}
         </Box>
         <Box w='40%'>
           <ListFeature title={"Upcoming Events"} w='100%'/>

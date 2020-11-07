@@ -10,10 +10,10 @@ import {
 // import Paybutton from './PayButton';
 import PaypalButton2 from './PayButton2';
 
-export default function BottomCards(data) { 
-  const newData = data.data;
+export default function BottomCards(props) { 
+  const event = props.event;
 
-  const owner = newData.user;
+  const owner = event.owner;
 
   const ownerBox = `This event is organized by ${owner.first_name + ' ' + owner.last_name}. 
                     Reach out to them at ${owner.phone_number} for any questions`;
@@ -56,8 +56,8 @@ export default function BottomCards(data) {
         {/* <Paybutton />         */}
         {/* <PaypalButton data={newData} /> */}
         
-        <PaypalButton2 
-          data={newData} 
+        {/* <PaypalButton2 
+          data={event} 
           client={client}
           env={ENV}
           commit={true}
@@ -66,7 +66,7 @@ export default function BottomCards(data) {
           onSuccess={onSuccess}
           onError={onError}
           onCancel={onCancel}
-        />  {/*  V2 trial */}
+        />   V2 trial */}
       </Box>
     );
   }

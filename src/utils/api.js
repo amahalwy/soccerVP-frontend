@@ -3,11 +3,11 @@ const API_HOST = process.env.NODE_ENV === 'production' ? 'https://soccervp-backe
 const makeUrl = (path) => `${API_HOST}${path}`;
 
 export const getEvent = (key, id) => fetch(makeUrl(`/events/${id}`), {
-  mode: {
+  headers: {
     Authorization: '... get the localStorage JWT key ...',
-    "Access-Control-Allow-Origin": '*',
-    "Host": 'https://soccer-vp-backend.vercel.app',
-    "Origin": 'https://soccer-vp-frontend.vercel.app'
+    // "Access-Control-Allow-Origin": '*',
+    // "Host": 'https://soccer-vp-backend.vercel.app',
+    // "Origin": 'https://soccer-vp-frontend.vercel.app'
   }
 }).then(r => r.json())
 
@@ -39,6 +39,7 @@ export const postSession = (router, request) => fetch(makeUrl('/sessions'), {
   } else {
     localStorage.setItem('jwtToken', data.jwt);
     localStorage.setItem('currentUser', JSON.stringify(data.user));
-    router.push(`/users/${data.user.id}`)
+    router.push('/profile')
+    // router.push(`/users/${data.user.id}`)
   }
 })

@@ -13,11 +13,18 @@ import BottomCards from '../../components/BottomCards';
 
 const Event = () => {
   const router = useRouter();
+
+  if (typeof window === 'undefined') return '';
+  if (localStorage.jwtToken === undefined) {
+    router.push('/')
+  }
+  
   const { isLoading, error, data } = useQuery(['event', router.query.eventId], getEvent, {
-    enabled: router.query.eventId !== undefined || router.query.eventId !== null 
+    enabled: !!router.query.eventId
   });
   if (isLoading) return 'Loading...';
   if (error) return 'An error has occurred: ' + error.message;
+  if (!router.query.eventId) return '';
 
   return (
     <Flex>
@@ -25,7 +32,7 @@ const Event = () => {
         <Heading w='90%' size="lg" fontSize="100px" mb='120px'>
           Here's what you need to know:
         </Heading>
-        <BottomCards data={data}/>
+        <BottomCards event={data}/>
       </Box>
       <Box w='60%' m='3rem'>
         <TopCards data={data}/>
