@@ -28,18 +28,22 @@ const Home = () => {
 
         <Box m='5% 0' pos='absolute' top='0px' left='100px'>
           <Flex justifyContent='center' mt='1%'>
-            <Heading fontSize='100px' color='white'>
-              Welcome to SoccerVP
+            <Heading fontSize='100px'>
+              <Text color='rgb(215, 219, 220)' textShadow='10px 10px 10px black'>
+                Welcome to SoccerVP
+              </Text>
             </Heading>
           </Flex>
           <Box>
-            <Heading fontSize='40px' color='white'>
-              Enjoy the ease of group managing soccer
+            <Heading fontSize='40px'>
+              <Text color='rgb(215, 219, 220)' textShadow='10px 10px 10px black'>
+                Enjoy the ease of organizing pickup soccer
+              </Text>
             </Heading>
           </Box>
           <Box color='white' mt='350px'>
-            <Button variantColor="teal" h='70px' w='300px' borderRadius='10px' onClick={openLogin}>
-              <Text fontSize='30px'>
+            <Button variantColor="teal" h='70px' w='300px' borderRadius='10px' onClick={openLogin} boxShadow='4px 4px 10px black'>
+              <Text fontSize='30px' >
                 Get started here
               </Text>
             </Button>
