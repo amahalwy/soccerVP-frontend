@@ -20,7 +20,6 @@ export const getUser = (key, id) => fetch(makeUrl(`/users/${id}`), {
 export const postUser = (user) => fetch(makeUrl('/users'), {
   method: 'POST',
   body: user,
-  mode: 'no-cors'
 }).then(r => r.json())
 
 // export const getCurrentUser = (key, token) => fetch(makeUrl(`/current_user`), {
