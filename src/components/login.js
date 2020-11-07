@@ -48,6 +48,15 @@ export default function Login(props) {
     // setPassword('');
   }
 
+  const openSignup = () => {
+    document.querySelector('.css-lznm1u').click();
+    document.getElementById('menubutton-6').click();
+
+    setTimeout(() => {
+      document.getElementById('signup-button').click();
+    }, 1);
+  }
+
   return (
     <Modal isOpen={props.openLoginModal} onClose={() => {
         clearFields();
@@ -84,7 +93,7 @@ export default function Login(props) {
                 <Button w='100%' onClick={handleLogin}>Send a One-Time-Password</Button>
               </Flex>
               <Box fontSize='14px'>
-                <p>Don't have an account? <strong>Sign up</strong></p>
+                <p>Don't have an account? <strong className='signup-instead' onClick={openSignup}>Sign up</strong></p>
               </Box>
             </Box>
           </Box>

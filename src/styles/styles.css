@@ -52,7 +52,6 @@ button:focus {
 .form-control {
   height: 100%;
   width: 100%;
-  /* margin-left: 20px; */
   border: 1px solid #E2E8F0;
   border-radius: 5px;
   padding: 0px 16px
@@ -98,4 +97,15 @@ button:focus {
 
 .soccer {
   transform: scale(1.7) translate(-330px, 70px);
+}
+
+.login-instead,
+.signup-instead {
+  color: #319795;
+}
+
+.login-instead:hover,
+.signup-instead:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

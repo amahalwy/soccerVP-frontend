@@ -66,6 +66,15 @@ export default function Signup(props) {
     }
   }
 
+  const openLogin = () => {
+    document.querySelector('.css-lznm1u').click();
+    document.getElementById('menubutton-6').click();
+
+    setTimeout(() => {
+      document.getElementById('login-button').click();
+    }, 1);
+  }
+
   return (
     <Modal isOpen={props.openSignupModal} onClose={() => {
         clearFields();
@@ -119,7 +128,7 @@ export default function Signup(props) {
                 <Button w='100%' onClick={handleSignup}>Get me started!</Button>
               </Flex>
               <Box fontSize='14px'>
-                <p>Already have an account? <strong>Log in</strong></p>
+                <p>Already have an account? <strong className='login-instead' onClick={openLogin}>Log in</strong></p>
               </Box>
             </Box>
           </Box>

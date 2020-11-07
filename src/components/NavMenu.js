@@ -79,7 +79,7 @@ export default function NavMenu(props) {
               </MenuButton>
               <MenuList mr='30px'>
                 <MenuItem color='black'>Home</MenuItem>
-                <MenuItem color='black' onClick={showSignup}>Signup</MenuItem>
+                <MenuItem id='signup-button' color='black' onClick={showSignup}>Signup</MenuItem>
                 <MenuItem id='login-button' color='black' onClick={showLogin}>Login</MenuItem>
               </MenuList>
             </React.Fragment>
