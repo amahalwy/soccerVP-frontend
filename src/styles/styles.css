@@ -152,3 +152,12 @@ button:focus {
   position: relative;
   z-index: 3;
 }
+
+.isSelected {
+  border-bottom: 3px solid red;
+  border-radius: 2px;
+}
+.eb-btn:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}

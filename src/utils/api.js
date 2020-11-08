@@ -22,12 +22,6 @@ export const postUser = (user) => fetch(makeUrl('/users'), {
   body: user,
 }).then(r => r.json())
 
-// export const getCurrentUser = (key, token) => fetch(makeUrl(`/current_user`), {
-//   headers: {
-//     Authorization: {token}
-//   }
-// }).then(r => r.json())
-
 export const postSession = (router, request) => fetch(makeUrl('/sessions'), {
   method: 'POST',
   body: request
@@ -40,6 +34,14 @@ export const postSession = (router, request) => fetch(makeUrl('/sessions'), {
     localStorage.setItem('jwtToken', data.jwt);
     localStorage.setItem('currentUser', JSON.stringify(data.user));
     router.push('/profile')
-    // router.push(`/users/${data.user.id}`)
   }
 })
+
+export const postEvent = (event) => fetch(makeUrl('/events'), {
+  method: 'POST',
+  headers: {
+    Authorization: localStorage.jwtToken,
+  },
+  body: event
+}).then(r => r.json())
+

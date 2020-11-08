@@ -6,7 +6,7 @@ import {
   Stack,
   Text, 
 } from "@chakra-ui/core";
-// import PayPalBtn from './Pay';
+import PayPalBtn from './Pay';
 
 export default function BottomCards(props) { 
   const event = props.event;
@@ -43,12 +43,12 @@ export default function BottomCards(props) {
       <Box 
         p='30px' 
         m='10px' 
+        bg='#319795' 
+        flex="1" 
         shadow="lg" 
         borderWidth="1px" 
-        flex="1" 
         rounded="lg"
         border='none' 
-        bg='#319795' 
         boxShadow='4px 4px 15px black'
         {...rest} 
       >
@@ -61,7 +61,7 @@ export default function BottomCards(props) {
   
   function StackEx() {
     return (
-      <Stack mb='80px' h='400px' >
+      <Stack >
         <Flex>
           <Feature
             title="Organizer"

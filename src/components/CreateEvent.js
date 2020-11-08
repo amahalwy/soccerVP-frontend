@@ -12,23 +12,22 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/core";
 import Datetime from "react-datetime";
-import { useMutation, useQuery } from 'react-query';
-
-const API_HOST = process.env.NODE_ENV === 'production' ? 'production_url' : 'http://localhost:5000';
-
-const makeUrl = (path) => `${API_HOST}${path}`;
-
-const postEvent = (event) => fetch(makeUrl('/events'), {
-  method: 'POST',
-  headers: {
-    Authorization: localStorage.jwtToken,
-  },
-  body: event
-}).then(r => r.json())
-
-
+import { useMutation } from 'react-query';
+import { postEvent } from '../utils/api';
+import { useRouter } from 'next/router';
 
 export default function CreateEvent(props) {
+  const router = useRouter();
+
+  let user = null;
+
+  if (typeof window === 'undefined') return '';
+  if (!localStorage.jwtToken) {
+    router.push('/');
+  } else {
+    user = JSON.parse(localStorage.currentUser);
+  }
+
   const [location, setLocation] = React.useState('');
   const [max, setMax] = React.useState(null);
   const [cost, setCost] = React.useState(null);
@@ -55,8 +54,11 @@ export default function CreateEvent(props) {
     event.append('event[cost_per_participant]', cost);
     event.append('event[starts_at]', start);
     event.append('event[ends_at]', end)
+    event.append('event[user_id]', user.id)
+    event.append('event[payment_link]', "https://paypal.com");
+    event.append('event[payment_type]', 1) //Defaulting to 1
 
-     try {
+    try {
       await mutate(event)
 
     } catch (error) {  
@@ -110,8 +112,6 @@ export default function CreateEvent(props) {
                   />
                 </Box>
               </Flex>
-
-
               <Flex m='20px 0' w='100%'>
                 <Datetime
                   inputProps={{placeholder: "Start date and time"}}

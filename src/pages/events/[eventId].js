@@ -28,13 +28,13 @@ const Event = () => {
 
   return (
     <Flex h='846px' bg='#eee'>
-      <Box w='60%' m='4rem 4rem 0 4rem'>
+      <Box w='60%' m='3.5rem 4rem 0 4rem'>
         <Heading w='90%' size="lg" fontSize="100px" mb='120px'>
           Here's what you need to know:
         </Heading>
         <BottomCards event={data}/>
       </Box>
-      <Box w='60%'  m='4rem 4rem 0 4rem'>
+      <Box w='60%' m='3.5rem 4rem 0 4rem'>
         <TopCards data={data}/>
         <Heading size="lg" fontSize="80px" >
           How to get your spot?
