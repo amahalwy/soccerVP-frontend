@@ -10,7 +10,15 @@ export default function UpcomingEvents(props) {
   
   return (
     <Box>
-      
+      {
+        props.events.map(event => {
+          return (
+            <div>
+              <p>{event.location}</p>
+            </div>
+          )
+        })
+      }
     </Box>
   )
 }

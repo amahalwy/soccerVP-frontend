@@ -6,7 +6,7 @@ import {
   Stack,
   Text, 
 } from "@chakra-ui/core";
-import PayPalBtn from './Pay';
+import PayPalBtn from './PayPal';
 
 export default function BottomCards(props) { 
   const event = props.event;
@@ -54,7 +54,7 @@ export default function BottomCards(props) {
       >
         <Heading fontSize={24}>{title}</Heading>
         <Text className='card-text' mt={4} mb='10px' fontSize={20}>{desc}</Text>
-        {/* <PayPalBtn /> */}
+        <PayPalBtn />
       </Box>
     );
   }

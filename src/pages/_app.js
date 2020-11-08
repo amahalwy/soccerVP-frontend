@@ -44,8 +44,9 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>SoccerVP</title>
 
-        {/* <script src="https://www.paypal.com/sdk/js?client-id=Aadlj71Rm2jESJjR1RNen8CSn6Yc3cSNRhRZmbIHAz1CzFOJuD59ICkbS9XxEvwv0DpAhpQ8_1YyJZGR&currency=USD" /> */}
-        <script src="https://www.paypalobjects.com/api/checkout.js"  data-log-level="error" />
+        <script src="https://www.paypal.com/sdk/js?client-id=Aadlj71Rm2jESJjR1RNen8CSn6Yc3cSNRhRZmbIHAz1CzFOJuD59ICkbS9XxEvwv0DpAhpQ8_1YyJZGR&currency=USD&disable-funding=credit,card" />
+        {/* <link rel="stylesheet" href="node_modules/react-responsive-carousel/lib/styles/carousel.min.css"/> */}
+        {/* <script src="https://www.paypalobjects.com/api/checkout.js"  data-log-level="error" /> */}
         
       </Head>
       <CSSReset />

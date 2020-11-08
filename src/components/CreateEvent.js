@@ -19,14 +19,8 @@ import { useRouter } from 'next/router';
 export default function CreateEvent(props) {
   const router = useRouter();
 
-  let user = null;
-
   if (typeof window === 'undefined') return '';
-  if (!localStorage.jwtToken) {
-    router.push('/');
-  } else {
-    user = JSON.parse(localStorage.currentUser);
-  }
+  // console.log(JSON.parse(localStorage.currentUser));
 
   const [location, setLocation] = React.useState('');
   const [max, setMax] = React.useState(null);

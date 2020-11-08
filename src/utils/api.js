@@ -2,12 +2,6 @@ const API_HOST = process.env.NODE_ENV === 'production' ? 'https://soccervp-backe
 
 const makeUrl = (path) => `${API_HOST}${path}`;
 
-export const getEvent = (key, id) => fetch(makeUrl(`/events/${id}`), {
-  headers: {
-    Authorization: localStorage.jwtToken,
-  }
-}).then(r => r.json())
-
 export const getUser = (key, id) => fetch(makeUrl(`/users/${id}`), {
   headers: {
     Authorization: '... get the localStorage JWT key ...',
@@ -34,6 +28,18 @@ export const postSession = (router, request) => fetch(makeUrl('/sessions'), {
   }
 })
 
+export const getProfile = (key, userId) => fetch(makeUrl(`/users/${userId}`), {
+  headers: {
+    Authorization: localStorage.jwtToken,
+  }
+}).then(r => r.json())
+
+export const getEvent = (key, id) => fetch(makeUrl(`/events/${id}`), {
+  headers: {
+    Authorization: localStorage.jwtToken,
+  }
+}).then(r => r.json())
+
 export const postEvent = (event) => fetch(makeUrl('/events'), {
   method: 'POST',
   headers: {
@@ -45,8 +51,5 @@ export const postEvent = (event) => fetch(makeUrl('/events'), {
 .then(data => {
   if (data.error) {
     alert(data.error);
-  } else {
-    localStorage.removeItem('currentUser');
-    localStorage.setItem('currentUser', JSON.stringify(data.user));
-  }
+  } 
 })
