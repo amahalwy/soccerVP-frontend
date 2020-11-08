@@ -4,10 +4,7 @@ const makeUrl = (path) => `${API_HOST}${path}`;
 
 export const getEvent = (key, id) => fetch(makeUrl(`/events/${id}`), {
   headers: {
-    Authorization: '... get the localStorage JWT key ...',
-    // "Access-Control-Allow-Origin": '*',
-    // "Host": 'https://soccer-vp-backend.vercel.app',
-    // "Origin": 'https://soccer-vp-frontend.vercel.app'
+    Authorization: localStorage.jwtToken,
   }
 }).then(r => r.json())
 
@@ -43,5 +40,13 @@ export const postEvent = (event) => fetch(makeUrl('/events'), {
     Authorization: localStorage.jwtToken,
   },
   body: event
-}).then(r => r.json())
-
+})
+.then(r => r.json())
+.then(data => {
+  if (data.error) {
+    alert(data.error);
+  } else {
+    localStorage.removeItem('currentUser');
+    localStorage.setItem('currentUser', JSON.stringify(data.user));
+  }
+})

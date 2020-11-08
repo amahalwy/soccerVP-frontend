@@ -25,7 +25,6 @@ export default function User() {
     router.push('/');
   } else {
     user = JSON.parse(localStorage.currentUser);
-    console.log(user);
   }
   
   if (!user.first_name || !user.last_name || !user.email) {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
-// import { getEvent } from '../../utils/api';
 import {
   Box, 
   Flex,

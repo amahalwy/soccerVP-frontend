@@ -35,12 +35,8 @@ export default function CreateEvent(props) {
   const [end, setEnd] = React.useState(null);
 
   const createEvent = (event) => {
-    postEvent(event)
-    .then(r => {
-      if (r.message === 'Success') {
-        props.showAuth();
-      }
-    })
+    postEvent(event);
+    router.push('/profile')
   }
   const [mutate] = useMutation(createEvent);
 
@@ -48,7 +44,7 @@ export default function CreateEvent(props) {
     e.preventDefault();
     const event = new FormData();
     
-    event.append('event[user_id]', localStorage.currentUserId)
+    event.append('event[user_id]', user.id)
     event.append('event[location]', location);
     event.append('event[max_participants]', max);
     event.append('event[cost_per_participant]', cost);

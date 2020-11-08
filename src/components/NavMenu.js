@@ -51,6 +51,7 @@ export default function NavMenu(props) {
           </MenuButton>
           <MenuList mr='40px'>
             <MenuItem color='black'>Home</MenuItem>
+            <MenuItem color='black' onClick={() => router.push('/profile')}>Profile</MenuItem>
             <MenuItem color='black' onClick={showCreate}>Create Event</MenuItem>
             <MenuItem color='black' onClick={logout}>Logout</MenuItem>
           </MenuList>
