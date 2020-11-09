@@ -19,14 +19,19 @@ const Event = () => {
   if (localStorage.jwtToken === undefined) {
     router.push('/')
   }
-  
+
+  console.log(router.query.eventId);
+
   const { isLoading, error, data } = useQuery(['event', router.query.eventId], getEvent, {
-    enabled: !!router.query.eventId
+    // enabled: router.query.eventId === undefined
+    refetchInterval: 20000
   });
   if (isLoading) return 'Loading...';
   if (error) return 'An error has occurred: ' + error.message;
-  if (!data) return '';
   
+  // console.log(data);
+  
+  if (!data) return '';
   if (data.status === 404) {
     toast({
       title: "This page does not exist.",
