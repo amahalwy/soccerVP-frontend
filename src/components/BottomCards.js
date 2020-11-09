@@ -20,20 +20,21 @@ export default function BottomCards(props) {
   function Feature({ title, desc, ...rest }) {
     return (
       <Box 
-        p='30px' 
-        m='10px' 
-        shadow="lg" 
-        borderWidth="1px" 
-        flex="1" 
-        rounded="lg" 
-        border='none' 
-        bg='#319795' 
+        p='30px'
+        m='10px'
+        bg='#42c2c0'
+        flex="1"
+        shadow="lg"
+        border='none'
+        rounded="lg"
         boxShadow='4px 4px 15px black'
         className='cards'
-        {...rest}  
+        borderWidth="1px"
+        backgroundImage='linear-gradient(to top right, #319795, #133c94)'
+        {...rest}
       >
-        <Heading fontSize={24}>{title}</Heading>
-        <Text className='card-text' mt={4} fontSize={20}>{desc}</Text>
+        <Heading color='#eee' fontSize={24}>{title}</Heading>
+        <Text color='#eee' className='card-text' mt={4} fontSize={20}>{desc}</Text>
       </Box>
     );
   }
@@ -41,19 +42,20 @@ export default function BottomCards(props) {
   function FeatureWithPaypal({ title, desc, ...rest }) {
     return (
       <Box 
-        p='30px' 
-        m='10px' 
-        bg='#319795' 
-        flex="1" 
-        shadow="lg" 
-        borderWidth="1px" 
+        p='30px'
+        m='10px'
+        bg='#319795'
+        flex="1"
+        shadow="lg"
+        border='none'
         rounded="lg"
-        border='none' 
         boxShadow='4px 4px 15px black'
-        {...rest} 
+        borderWidth="1px"
+        backgroundImage='linear-gradient(to top right, #319795, #133c94)'
+        {...rest}
       >
-        <Heading fontSize={24}>{title}</Heading>
-        <Text className='card-text' mt={4} mb='10px' fontSize={20}>{desc}</Text>
+        <Heading color='#eee' fontSize={24}>{title}</Heading>
+        <Text color='#eee' className='card-text' mt={4} mb='10px' fontSize={20}>{desc}</Text>
         <PayPalBtn />
       </Box>
     );

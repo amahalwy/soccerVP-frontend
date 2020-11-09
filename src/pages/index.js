@@ -1,5 +1,4 @@
 import React from 'react'
-import Search from '../components/search';
 import {
   Box,
   Button,
@@ -12,11 +11,21 @@ import {
 const Home = () => {
 
   const openLogin = () => {
-    document.getElementById('menubutton-6').click()
 
-    setTimeout(() => {
-      document.getElementById('login-button').click();
-    }, 1);
+    if (localStorage.jwtToken === undefined) {
+      document.getElementById('menubutton-6').click()
+  
+      setTimeout(() => {
+        document.getElementById('login-button').click();
+      }, 1);
+    } else {
+      document.getElementById('menubutton-6').click()
+
+      setTimeout(() => {
+        document.getElementById('create-button').click();
+      }, 1);
+    }
+
   }
 
   return (
@@ -36,7 +45,7 @@ const Home = () => {
           </Flex>
           <Box>
             <Heading fontSize='40px'>
-              <Text color='rgb(215, 219, 220)' textShadow='10px 10px 10px black'>
+              <Text color='rgb(215, 219, 220)' textShadow='10px 10px 10px black' ml='10px'>
                 Enjoy the ease of organizing pickup soccer
               </Text>
             </Heading>

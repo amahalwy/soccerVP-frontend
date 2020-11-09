@@ -56,20 +56,20 @@ export default function User() {
 
         <Box>
           <Flex pt='10px' h='200px' justifyContent='flex-start'>
-            <Box h='50%' mr='20px' borderRadius='10px' fontSize='24px'>
+            <Box h='50%' mr='20px' borderRadius='10px' fontSize='20px'>
               <Flex>
                 <Text textDecor='underline' mr='5px'>First Name: </Text>
                 <Text>{data.first_name}</Text>
               </Flex>
               <Flex>
-                <Text textDecor='underline' mr='5px'>Email: </Text>
-                <Text>{data.email}</Text>
-              </Flex>
-            </Box>
-            <Box h='50%' borderRadius='10px' fontSize='24px'>
-              <Flex>
                 <Text textDecor='underline' mr='5px'>Last Name: </Text>
                 <Text>{data.last_name}</Text>
+              </Flex>
+            </Box>
+            <Box h='50%' borderRadius='10px' fontSize='20px'>
+              <Flex>
+                <Text textDecor='underline' mr='5px'>Email: </Text>
+                <Text>{data.email}</Text>
               </Flex>
               <Flex>
                 <Text textDecor='underline' mr='5px'>Phone Number: </Text>
@@ -78,28 +78,29 @@ export default function User() {
             </Box>
           </Flex>
         </Box>
-
       </Box>
+      
       <Box m='100px auto' h='70px' w='80%' >
         <Box fontSize='40px'>Events</Box>
-        <Flex pt='10px' borderBottom='1px solid black'>
+        <Flex pt='10px' borderBottom='1px solid black' fontSize='20px'>
           <Box mr='5px' h='100%' >
             <Box className='eb-btn' mb='1px' bg='#eee' p='5px 10px'>Upcoming Events</Box>
-            <Box className='isSelected'></Box>
+            <Box id='upcoming' className='isSelected'></Box>
           </Box>
           <Box mr='5px' h='100%'>
             <Box className='eb-btn' mb='1px' bg='#eee' p='5px 10px'>History</Box>
-            <Box></Box>
+            <Box id='history'></Box>
             </Box>
           <Box mr='5px' h='100%'>
             <Box className='eb-btn' mb='1px' bg='#eee' p='5px 10px'>Owner</Box>
-            <Box></Box>
+            <Box id='owner'></Box>
           </Box>
         </Flex>
       </Box>
-      <Box m='40px auto' h='70px' w='80%' border='1px solid black' >
+      <Box m='40px auto' h='70px' w='80%' >
+        {
+        }
         <UpcomingEvents user={user} events={data.events}/>
-        {/* <PastEvents user={user}/> */}
       </Box>
       
     </Box> 

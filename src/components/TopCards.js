@@ -42,23 +42,23 @@ export default function TopCards(data) {
     return time + timeFrame;
   }
 
-
   function Feature({ title, desc, ...rest }) {
     return (
       <Box 
         p='30px' 
         m='10px' 
-        shadow="lg" 
-        borderWidth="1px" 
-        flex="1" 
-        rounded="lg" 
-        border='none' 
         bg='#319795' 
+        flex="1" 
+        shadow="lg" 
+        border='none' 
+        rounded="lg" 
         boxShadow='4px 4px 15px black'
+        borderWidth="1px" 
+        backgroundImage='linear-gradient(to top right, #319795, #133c94)'
         {...rest}  
       >
-        <Heading fontSize={24}>{title}</Heading>
-        <Text mt={4} fontSize={20}>{desc}</Text>
+        <Heading color='#eee' fontSize={24}>{title}</Heading>
+        <Text color='#eee' mt={4} fontSize={20}>{desc}</Text>
       </Box>
     );
   }

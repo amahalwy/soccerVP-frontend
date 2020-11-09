@@ -77,7 +77,15 @@ export default function AuthModal(props) {
             </Box>
             <Box mb='5px'>
               <Flex justifyContent='center' mb='20px' >
-                <Button w='100%' onClick={handleLogin}>Log me in!</Button>
+                <div className="container-modal">
+                  <div>
+                    <Button _hover={{bg: 'none'}} onClick={handleLogin}>
+                      <span>
+                        Send a One-Time-Password
+                      </span>
+                    </Button>
+                  </div>
+                </div>
               </Flex>
             </Box>
           </Box>

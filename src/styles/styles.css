@@ -126,7 +126,6 @@ button:focus {
   border-radius: 0.3em;
   position: relative;
   background-color: #319795;
-  /* -webkit-backface-visibility: hidden; */
   z-index: 1;
 }
      
@@ -138,7 +137,7 @@ button:focus {
   width: 100%;
   height: 100%;
   border-radius: 0.3em;
-  background-image: linear-gradient(to top right, #42cece, #1e5857);
+  background-image: linear-gradient(to top right, #319795, #133c94);
   transition: opacity 0.5s ease-out;
   z-index: 2;
   opacity: 0;

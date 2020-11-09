@@ -18,15 +18,13 @@ import { useRouter } from 'next/router';
 
 export default function CreateEvent(props) {
   const router = useRouter();
-
-  if (typeof window === 'undefined') return '';
-  // console.log(JSON.parse(localStorage.currentUser));
-
   const [location, setLocation] = React.useState('');
   const [max, setMax] = React.useState(null);
   const [cost, setCost] = React.useState(null);
   const [start, setStart] = React.useState(null);
   const [end, setEnd] = React.useState(null);
+
+  if (typeof window === 'undefined') return '';
 
   const createEvent = (event) => {
     postEvent(event);
@@ -117,7 +115,15 @@ export default function CreateEvent(props) {
             </Box>
             <Box mb='5px'>
               <Flex justifyContent='center' mb='20px' >
-                <Button w='100%' onClick={handleCreate}>Create event!</Button>
+                <div className="container-modal">
+                  <div>
+                    <Button _hover={{bg: 'none'}} onClick={handleCreate}>
+                      <span>
+                        Create event!
+                      </span>
+                    </Button>
+                  </div>
+                </div>
               </Flex>
             </Box>
           </Box>

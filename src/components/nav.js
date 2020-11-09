@@ -74,14 +74,15 @@ export default function Navbar(props) {
   return (
     <Flex
       as="nav"
-      align="center"
-      justify="space-between"
-      wrap="wrap"
-      padding="1.5rem"
       bg="teal.500"
+      wrap="wrap"
       color="white"
-      boxShadow="0px 12px 12px 1px rgba(0, 0, 0, 0.3);"
+      align="center"
       zIndex='1000'
+      justify="space-between"
+      padding="1.5rem"
+      boxShadow="0px 12px 12px 1px rgba(0, 0, 0, 0.3);"
+      backgroundImage='linear-gradient(to top right, #319795, #06225f)'
       {...props}
     >
       <Flex align="center" mr={5}>
