@@ -111,7 +111,7 @@ export default function User() {
         <Box fontSize='40px' ml='5px'>
           Profile
         </Box>
-        <Box bg='white' h='100%' w='100%' borderRadius='20px' boxShadow='2px 2px 10px black'>
+        <Box mt='24px' bg='white' h='100%' w='100%' borderRadius='20px' boxShadow='2px 2px 10px black'>
           <Box h='25%'>
             <Box>
               <img src=''/>
@@ -153,19 +153,19 @@ export default function User() {
 
       <Box w='30%'>
         <Box fontSize='40px'>
-          <Box h='70px' w='80%' >
+          <Box h='70px' w='100%' >
             <Box fontSize='40px'>Events</Box>
             <Flex pt='10px' borderBottom='1px solid #ccc' fontSize='20px'>
               <Box mr='5px' h='100%' >
-                <Box className='eb-btn' mb='1px' bg='#eee' p='5px 10px'>Upcoming Events</Box>
+                <Box className='eb-btn' bg='#eee' p='5px 10px'>Upcoming Events</Box>
                 <Box id='upcoming' className='isSelected'></Box>
               </Box>
               <Box mr='5px' h='100%'>
-                <Box className='eb-btn' mb='1px' bg='#eee' p='5px 10px'>History</Box>
+                <Box className='eb-btn' bg='#eee' p='5px 10px'>History</Box>
                 <Box id='history'></Box>
               </Box>
               <Box mr='5px' h='100%'>
-                <Box className='eb-btn' mb='1px' bg='#eee' p='5px 10px'>Owner</Box>
+                <Box className='eb-btn' bg='#eee' p='5px 10px'>Owner</Box>
                 <Box id='owner'></Box>
               </Box>
             </Flex>

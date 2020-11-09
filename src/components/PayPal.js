@@ -2,20 +2,20 @@ import React from 'react';
 import { PayPalButton } from "react-paypal-button-v2";
 import { useRouter } from 'next/router';
 
-export default function PayPalBtn () {
+export default function PayPalBtn (props) {
 
   const router = useRouter();
   // const { amount, onSuccess, currency } = this.props;
   return (
     <PayPalButton
-      amount="1.00"
+      amount={props.event.cost_per_participant}
       onSuccess={(details, data) => {
         console.log(data);
         // console.log("Transaction completed by " + details.payer.name.given_name);
         router.push('/complete')
 
         // OPTIONAL: Call your server to save the transaction
-        return fetch("/rsvps", {
+        return fetch("/events", {
           
           // method: "post",
           // body: JSON.stringify({
@@ -24,9 +24,10 @@ export default function PayPalBtn () {
         });
       }}
 
-      catchError={(err) => {
+      onError={err => {
         console.log(err);
       }}
+
     />
   );
 }
