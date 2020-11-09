@@ -50,68 +50,12 @@ export default function User() {
   console.log(data);
 
   return (
-    // <Box backgroundColor='#eee' h='846px' w='90%' m='0 auto'>
-    //   <Box m='40px auto' h='200px' w='80%'>
-    //     <Box fontSize='40px' >Profile</Box>
-
-    //     <Box>
-    //       <Flex pt='10px' h='200px' justifyContent='flex-start'>
-    //         <Box h='50%' mr='20px' borderRadius='10px' fontSize='20px'>
-    //           <Flex>
-    //             <Text textDecor='underline' mr='5px'>First Name: </Text>
-    //             <Text>{data.first_name}</Text>
-    //           </Flex>
-    //           <Flex>
-    //             <Text textDecor='underline' mr='5px'>Last Name: </Text>
-    //             <Text>{data.last_name}</Text>
-    //           </Flex>
-    //         </Box>
-    //         <Box h='50%' borderRadius='10px' fontSize='20px'>
-    //           <Flex>
-    //             <Text textDecor='underline' mr='5px'>Email: </Text>
-    //             <Text>{data.email}</Text>
-    //           </Flex>
-    //           <Flex>
-    //             <Text textDecor='underline' mr='5px'>Phone Number: </Text>
-    //             <Text>{data.phone_number}</Text>
-    //           </Flex>
-    //         </Box>
-    //       </Flex>
-    //     </Box>
-    //   </Box>
-      
-    //   <Box m='100px auto' h='70px' w='80%' >
-    //     <Box fontSize='40px'>Events</Box>
-    //     <Flex pt='10px' borderBottom='1px solid #ccc' fontSize='20px'>
-    //       <Box mr='5px' h='100%' >
-    //         <Box className='eb-btn' mb='1px' bg='#eee' p='5px 10px'>Upcoming Events</Box>
-    //         <Box id='upcoming' className='isSelected'></Box>
-    //       </Box>
-    //       <Box mr='5px' h='100%'>
-    //         <Box className='eb-btn' mb='1px' bg='#eee' p='5px 10px'>History</Box>
-    //         <Box id='history'></Box>
-    //         </Box>
-    //       <Box mr='5px' h='100%'>
-    //         <Box className='eb-btn' mb='1px' bg='#eee' p='5px 10px'>Owner</Box>
-    //         <Box id='owner'></Box>
-    //       </Box>
-    //     </Flex>
-    //   </Box>
-    //   <Box m='40px auto' h='70px' w='80%' >
-    //     {
-    //     }
-        // <UpcomingEvents user={user} events={data.events}/>
-    //   </Box>
-      
-    // </Box> 
     <Flex justifyContent='space-around' w='100%' m='80px 0'>
-
-
       <Box h='500px' w='30%'>
         <Box fontSize='40px' ml='5px'>
           Profile
         </Box>
-        <Box mt='24px' bg='white' h='100%' w='100%' borderRadius='20px' boxShadow='2px 2px 10px black'>
+        <Box mt='24px' bg='white' h='100%' w='100%' borderRadius='20px' boxShadow='2px 2px 10px #bbb'>
           <Box h='25%'>
             <Box>
               <img src=''/>
@@ -151,7 +95,7 @@ export default function User() {
       </Box>
 
 
-      <Box w='30%'>
+      <Box w='40%'>
         <Box fontSize='40px'>
           <Box h='70px' w='100%' >
             <Box fontSize='40px'>Events</Box>
@@ -169,6 +113,9 @@ export default function User() {
                 <Box id='owner'></Box>
               </Box>
             </Flex>
+            <Box>
+              <UpcomingEvents user={user} events={data.events}/>
+            </Box>
           </Box>
         </Box>
       </Box>
