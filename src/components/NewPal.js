@@ -18,16 +18,18 @@ export default function NewPal(props) {
 
 
   const onApprove = (data, actions) => {
-    console.log('actions:', actions)
-    console.log('data:', data)
-
-
-    // This function captures the funds from the transaction.
     return actions.order.capture().then(function(details)  {
       // This function shows a transaction success message to your buyer.
-      router.push('/complete')
-      alert('Transaction completed by ' + details.payer.name.given_name);
-    });
+      // alert('Transaction completed by ' + details.payer.name.given_name);
+      console.log(details);
+
+      if (details.status === "COMPLETED") {
+        localStorage.setItem('paypalDetails', JSON.stringify(details));
+        router.push('/confirmation');
+      } else {
+        // Show some type of error
+      }
+    })
   }
 
   return (

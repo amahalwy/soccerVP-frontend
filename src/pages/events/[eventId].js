@@ -22,10 +22,7 @@ const Event = () => {
 
   console.log(router.query.eventId);
 
-  const { isLoading, error, data } = useQuery(['event', router.query.eventId], getEvent, {
-    // enabled: router.query.eventId === undefined
-    refetchInterval: 20000
-  });
+  const { isLoading, error, data } = useQuery(['event', router.query.eventId], getEvent);
   if (isLoading) return 'Loading...';
   if (error) return 'An error has occurred: ' + error.message;
   
