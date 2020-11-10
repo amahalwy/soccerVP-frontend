@@ -8,6 +8,8 @@ import BottomFeaturePaypal from './BottomFeaturePaypal';
 
 export default function StackEx(props) {
 
+  if (typeof window === 'undefined') return '';
+  const currentUser = JSON.parse(localStorage.currentUser)
   const owner = props.event.owner;
 
   const ownerBox = `This event is organized by ${owner.first_name + ' ' + owner.last_name}. 
@@ -25,6 +27,7 @@ export default function StackEx(props) {
           title="How to register"
           desc={payBox}
           event={props.event}
+          currentUser={currentUser}
         />
       </Flex>
     </Stack>

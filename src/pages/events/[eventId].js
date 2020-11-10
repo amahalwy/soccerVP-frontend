@@ -20,8 +20,6 @@ const Event = () => {
     router.push('/')
   }
 
-  console.log(router.query.eventId);
-
   const { isLoading, error, data } = useQuery(['event', router.query.eventId], getEvent);
   if (isLoading) return 'Loading...';
   if (error) return 'An error has occurred: ' + error.message;
@@ -29,10 +27,9 @@ const Event = () => {
   // console.log(data);
   
   if (!data) return '';
-  if (data.status === 404) {
+  if (data.status === 404 && router.query.eventId !== undefined) {
     toast({
-      title: "This page does not exist.",
-      description: "Please edit your profile details.",
+      title: "This event page does not exist.",
       status: "error",
       duration: 10000,
       isClosable: true,

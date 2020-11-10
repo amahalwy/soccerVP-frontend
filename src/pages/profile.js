@@ -33,15 +33,15 @@ export default function User() {
   if (isLoading) return 'Loading...';
   if (error) return 'An error has occurred: ' + error.message;
   
-  // if (!user.first_name || !user.last_name || !user.email) {
-  //   toast({
-  //     title: "Account not complete.",
-  //     description: "Please edit your profile details.",
-  //     status: "error",
-  //     duration: 3000,
-  //     isClosable: true,
-  //   })
-  // }
+  if (!user.first_name || !user.last_name || !user.email) {
+    toast({
+      title: "Account not complete.",
+      description: "Please edit your profile details.",
+      status: "error",
+      duration: 3000,
+      isClosable: true,
+    })
+  }
 
   // const renderComponent = () => {
   //   if ()

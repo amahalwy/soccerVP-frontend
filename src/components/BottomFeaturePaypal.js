@@ -7,7 +7,7 @@ import {
 import PayPalBtn from './PayPal';
 import NewPal from './NewPal';
 
-export default function FeatureWithPaypal({ title, desc, event,  ...rest }) {
+export default function FeatureWithPaypal({ title, desc, event, currentUser, ...rest }) {
 
   return (
     <Box 
@@ -26,7 +26,7 @@ export default function FeatureWithPaypal({ title, desc, event,  ...rest }) {
       <Heading color='#eee' fontSize={24}>{title}</Heading>
       <Text color='#eee' className='card-text' mt={4} mb='10px' fontSize={20}>{desc}</Text>
       {/* <PayPalBtn event={event}/> */}
-      <NewPal event={event}/>
+      <NewPal event={event} currentUser={currentUser}/>
     </Box>
   );
 }

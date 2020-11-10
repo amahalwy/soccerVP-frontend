@@ -2,6 +2,8 @@ const API_HOST = process.env.NODE_ENV === 'production' ? 'https://soccervp-backe
 
 const makeUrl = (path) => `${API_HOST}${path}`;
 
+
+// User apis
 export const getUser = (key, id) => fetch(makeUrl(`/users/${id}`), {
   headers: {
     Authorization: '... get the localStorage JWT key ...',
@@ -34,6 +36,8 @@ export const getProfile = (key, userId) => fetch(makeUrl(`/users/${userId}`), {
   }
 }).then(r => r.json())
 
+
+// Event apis
 export const getEvent = (key, id) => fetch(makeUrl(`/events/${id}`), {
   headers: {
     Authorization: localStorage.jwtToken,
@@ -53,3 +57,10 @@ export const postEvent = (event) => fetch(makeUrl('/events'), {
     alert(data.error);
   } 
 })
+
+
+// RSVP apis
+export const postRsvp = (rsvp) => fetch(makeUrl('/rsvps'), {
+  method: 'POST',
+  body: rsvp,
+}).then(r => r.json())

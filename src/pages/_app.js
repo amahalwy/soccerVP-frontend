@@ -39,6 +39,14 @@ const GlobalStyle = () => {
 
 function MyApp({ Component, pageProps }) {
 
+  const queryCache = new QueryCache({
+    defaultConfig: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  })
+
   return (
     <ThemeProvider theme={theme}>
       <Head>
