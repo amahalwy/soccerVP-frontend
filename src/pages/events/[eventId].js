@@ -70,13 +70,13 @@ const Event = () => {
 
   return (
     <Box h='600px' w='70%' m='0 auto' bg='white' borderRadius='0 0 10px 10px' boxShadow='0 0 1px black' >
-      <Box m='10px 40px' w='90%' fontSize='40px' borderBottom='1px solid #ccc'>
+      <Box m='20px 40px' w='90%' fontSize='40px' borderBottom='1px solid #ccc'>
         Event Details
       </Box>
       <Flex m='30px 40px' w='90%' >
-        <Box w='55%' mr='20px'>
 
-          <Box h='60%' w='100%'>
+        <Box w='50%' mr='20px'>
+          <Box m='20px 0' w='100%'>
             <Flex  
               border='none' 
               borderWidth="1px" 
@@ -93,7 +93,7 @@ const Event = () => {
             </Flex>
           </Box>
 
-          <Box mt='20px' h='60%'>
+          <Box m='100px 0'>
             <Flex  
               border='none' 
               borderWidth="1px" 
@@ -110,7 +110,7 @@ const Event = () => {
             </Flex>
           </Box>
 
-          <Box mt='20px' h='60%'>
+          <Box m='100px 0'>
             <Flex  
               border='none' 
               borderWidth="1px" 
@@ -125,13 +125,11 @@ const Event = () => {
               </Box>
             </Flex>
           </Box>
-
         </Box>
 
         <Box w='45%'>
-          <Box h='50%' w='100%'>
+          <Box m='20px 0' h='32%' w='100%'>
             <Flex  
-              flex="1" 
               border='none' 
               borderWidth="1px" 
               >
@@ -142,9 +140,8 @@ const Event = () => {
             </Flex>
           </Box>
 
-          <Box mt='40px' h='50%'>
+          <Box h='30%'>
             <Flex  
-              flex="1" 
               border='none' 
               borderWidth="1px" 
               >
@@ -152,8 +149,12 @@ const Event = () => {
               {showText(desc)}
             </Flex>
           </Box>
-          {showPaypal()}
+          <Box h='100%'>
+            {showPaypal()}
+          </Box>
         </Box>
+
+
       </Flex>
     </Box>
   )
