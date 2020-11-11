@@ -9,6 +9,26 @@ import NewPal from './NewPal';
 
 export default function FeatureWithPaypal({ title, desc, event, currentUser, ...rest }) {
 
+  const showPaypal = () => {
+    if (event.owner.id !== currentUser.id) {
+      <NewPal event={event} currentUser={currentUser}/>
+    } else {
+      return '';
+    }
+  }
+
+  const showText = (desc) => {
+    if (event.owner.id !== currentUser.id) {
+      <Text color='#eee' className='card-text' mt={4} mb='10px' fontSize={20}>{desc}</Text>
+    } else {
+      return (
+        <Text color='#eee' className='card-text' mt={4} mb='10px' fontSize={20}>
+          You are the organizer of this event. Check out your profile to see more details.
+        </Text>
+      )
+    }
+  }
+
   return (
     <Box 
       p='30px'
@@ -24,9 +44,9 @@ export default function FeatureWithPaypal({ title, desc, event, currentUser, ...
       {...rest}
     >
       <Heading color='#eee' fontSize={24}>{title}</Heading>
-      <Text color='#eee' className='card-text' mt={4} mb='10px' fontSize={20}>{desc}</Text>
-      {/* <PayPalBtn event={event}/> */}
-      <NewPal event={event} currentUser={currentUser}/>
+      {showText(desc)}
+      {showPaypal()}
+      {/* <NewPal event={event} currentUser={currentUser}/> */}
     </Box>
   );
 }

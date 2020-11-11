@@ -33,10 +33,10 @@ export default function TopStack(props) {
     return time + timeFrame;
   }
 
-  const location = `We'll be playing at ${props.data.location}. Make sure you check the weather!`;
-  const start = `Event time will be ${getDate(props.data.starts_at)} - ${getEndTime(props.data.ends_at)}`
-  const playerInfo = `Cost of each player is $${props.data.cost_per_participant}. 
-                      Book fast, this event is capped at ${props.data.max_participants} total players!`
+  const location = `We'll be playing at ${props.event.location}. Make sure you check the weather!`;
+  const start = `Event time will be ${getDate(props.event.starts_at)} - ${getEndTime(props.event.ends_at)}`
+  const playerInfo = `Cost of each player is $${props.event.cost_per_participant}. 
+                      Book fast, this event is capped at ${props.event.max_participants} total players!`
   return (
     <Stack mb='60px' >
       <Flex>

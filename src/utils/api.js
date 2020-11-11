@@ -15,6 +15,14 @@ export const postUser = (user) => fetch(makeUrl('/users'), {
   body: user,
 }).then(r => r.json())
 
+export const patchUser = (user, id) => fetch(makeUrl(`/users/${id}`), {
+  method: 'PATCH',
+  headers: {
+    Authorization: localStorage.jwtToken,
+  },
+  body: user,
+}).then(r => r.json())
+
 export const postSession = (router, request) => fetch(makeUrl('/sessions'), {
   method: 'POST',
   body: request

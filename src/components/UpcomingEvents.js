@@ -48,7 +48,7 @@ export default function UpcomingEvents(props) {
         {
           props.events.map(event => {
             return (
-              <Box m='20px 20px 20px 0' w='300px' h='200px' borderRadius='10px' bg='#fff' boxShadow='2px 2px 10px #bbb'>
+              <Box m='20px 20px 20px 0' w='300px' h='200px' borderRadius='10px' bg='#fff' boxShadow='1px 1px 4px #bbb'>
                 <Box mb='130px'></Box>
                 <Text ml='10px' fontSize='20px'>{event.location}</Text>
                 <Text ml='10px' fontSize='16px'>{getDate(event.starts_at)} - {getEndTime(event.ends_at)}</Text>

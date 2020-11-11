@@ -49,36 +49,27 @@ export default function NewPal(props) {
     console.log(data);
     return actions.order.capture().then(function(details)  {
       // This function shows a transaction success message to your buyer.
-      // alert('Transaction completed by ' + details.payer.name.given_name);
 
       if (details.status === "COMPLETED") {
-        debugger
         handleCreate();
         localStorage.setItem('paypalDetails', JSON.stringify(details));
+        setTimeout(() => {
+          router.push('/profile')
+        }, 2000);
         toast({
-          position: top,
-          duration: 20000,
-          isClosable: true,
           status: "success",
-          render: () => {
-            return (
-              <Box m='auto'>
-                <Flex>
-                  <Text>
-                    Transaction complete!
-                  </Text>
-                  <CloseButton />
-                </Flex>
-              </Box>
-            )
-          }
+          position: top,
+          duration: 2000,
+          isClosable: true,
+          title: "Transaction completed!",
+          description: "Moving to your profile...",
         })
       } else {
         toast({
           title: "Transaction failed.",
-          description: "Please try again laster.",
+          description: "Please try again later.",
           status: "error",
-          duration: 5000,
+          duration: 3000,
           isClosable: true,
         })
       }
@@ -92,20 +83,6 @@ export default function NewPal(props) {
         onApprove={onApprove} 
         createOrder={createOrder}
       />
-      {/* return (
-      <Button
-        onClick={() =>
-          toast({
-            title: "Account created.",
-            description: "We've created your account for you.",
-            status: "success",
-            duration: 9000,
-            isClosable: true,
-          })
-        }
-      >
-        Show Toast
-      </Button> */}
     </PayPalScriptProvider>
   );
 }
