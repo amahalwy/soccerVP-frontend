@@ -120,7 +120,7 @@ const Event = () => {
               </Box>
               <Box>
                 <Text color='black' ml='20px' fontSize='20px'>
-                  Reach out to the organizer for further details!
+                  Reach out to the organizer for further details.
                 </Text>
               </Box>
             </Flex>
@@ -134,13 +134,13 @@ const Event = () => {
               borderWidth="1px" 
               >
               <Heading color='black' fontSize='24px'>Location</Heading>
-              <Text color='black' ml='20px' fontSize='20px'>
+              <Text color='black' ml='30px' fontSize='20px'>
                 We'll be playing at {data.location}. Make sure you check the weather!
               </Text>
             </Flex>
           </Box>
 
-          <Box h='30%'>
+          <Box h='30%' w='100%'>
             <Flex  
               border='none' 
               borderWidth="1px" 

@@ -1,12 +1,10 @@
 import React from 'react';
-import { Box, Heading, Flex, Text, Button,Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure
+import { 
+  Box,  
+  Flex, 
+  Heading, 
+  Link,
+  Text, 
 } from "@chakra-ui/core";
 import Login from '../components/login';
 import Signup from '../components/signup';
@@ -14,6 +12,7 @@ import Create from '../components/CreateEvent'
 import NavMenu from './NavMenu';
 import AuthModal from './AuthModal';
 import { useQuery } from 'react-query';
+import { useRouter } from 'next/router';
 // import { getCurrentUser } from '../utils/api';
 
 const MenuItems = ({ children }) => (
@@ -23,6 +22,7 @@ const MenuItems = ({ children }) => (
 );
 
 export default function Navbar(props) {
+  const router = useRouter();
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
 
@@ -86,8 +86,17 @@ export default function Navbar(props) {
       {...props}
     >
       <Flex align="center" mr={5}>
-        <Heading as="h1" size="lg" letterSpacing={"-.1rem"}>
-          Chakra UI
+        <Heading  
+          ml='80px' 
+          as="h1" 
+          fontSize='35px' 
+          letterSpacing={"1px"} 
+          cursor='pointer'
+          onClick={() =>{
+            router.push('/');
+          }}
+        >
+          SVP
         </Heading>
       </Flex>
 
@@ -101,17 +110,6 @@ export default function Navbar(props) {
           <title>Menu</title>
           <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
         </svg>
-      </Box>
-
-      <Box
-        display={{ sm: show ? "block" : "none", md: "flex" }}
-        width={{ sm: "full", md: "auto" }}
-        alignItems="center"
-        flexGrow={1}
-      >
-        <MenuItems>Docs</MenuItems>
-        <MenuItems>Examples</MenuItems>
-        <MenuItems>Blog</MenuItems>
       </Box>
 
       <Box

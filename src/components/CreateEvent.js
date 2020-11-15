@@ -23,6 +23,7 @@ export default function CreateEvent(props) {
   const [cost, setCost] = React.useState(null);
   const [start, setStart] = React.useState(null);
   const [end, setEnd] = React.useState(null);
+  const [link, setLink] = React.useState(null);
 
   if (typeof window === 'undefined') return '';
 
@@ -43,7 +44,7 @@ export default function CreateEvent(props) {
     event.append('event[starts_at]', start);
     event.append('event[ends_at]', end)
     event.append('event[user_id]', user.id)
-    event.append('event[payment_link]', "https://paypal.com");
+    event.append('event[payment_link]', link);
     event.append('event[payment_type]', 1) //Defaulting to 1
 
     try {
@@ -60,6 +61,7 @@ export default function CreateEvent(props) {
     setCost('');
     setStart('');
     setEnd('');
+    setLink('');
   }
 
   return (
@@ -112,6 +114,12 @@ export default function CreateEvent(props) {
                   onChange={e => setEnd(e._d)}
                 />
               </Flex>
+              <Box m='20px 0px'>
+                <Input
+                  value={link} placeholder="Paypal link to accept payments"
+                  onChange={e => setLink(e.currentTarget.value)} 
+                />
+              </Box>
             </Box>
             <Box mb='5px'>
               <Flex justifyContent='center' mb='20px' >

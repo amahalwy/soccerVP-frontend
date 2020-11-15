@@ -77,7 +77,7 @@ export default function NewPal(props) {
   }
 
   return (
-    <PayPalScriptProvider options={{ "client-id": "sb" }}>
+    <PayPalScriptProvider options={{ "client-id": "Aadlj71Rm2jESJjR1RNen8CSn6Yc3cSNRhRZmbIHAz1CzFOJuD59ICkbS9XxEvwv0DpAhpQ8_1YyJZGR" }}>
       <PayPalButtons 
         style={{ layout: "horizontal" }} 
         onApprove={onApprove} 
